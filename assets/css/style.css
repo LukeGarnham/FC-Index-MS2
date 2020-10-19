@@ -1,0 +1,15 @@
+/*Import fonts from Google Fonts: Webpage title = 'Krona One', Body text = 'Exo' */
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Krona+One&display=swap');
+
+/*----------------------------------------------------------------------------------------------------------General rules*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+}
+
+/*----------------------------------------------------------------------------------------------------------Section title here*/
+
+/*------------------------------------------------Sub-section title here*/
