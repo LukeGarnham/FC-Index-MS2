@@ -14,21 +14,47 @@ body {
 
 header {
     background-color: #0077B6;
-    height: 100px;
+    height: 110px;
 }
 
 header img {
-    max-height: 90px;
+    max-height: 100px;
 }
 
-.company_name {
+#company_name {
     font-family: 'Krona One', sans-serif;
     color: #fff;
 }
 
-.company_name:hover {
+#company_name:hover {
     color:#fff;
     text-decoration: none;
+}
+
+/*----------------------------------------------------------------------------------------------------------Footer*/
+
+footer {
+    background-color: #d64933;
+    color: #fff;
+    height: 110px;
+}
+
+.grey {
+    background-color: #828a95;
+    color: #fff;    
+}
+
+.button-style  {
+    border-radius: 15px;
+}
+
+#a_footer {
+    color: inherit;
+}
+
+#a_footer:hover {
+    color: inherit;
+    font-weight: bold;
 }
 
 /*----------------------------------------------------------------------------------------------------------Section title here*/

@@ -13,15 +13,35 @@
 </head>
 <body>
     <header class="d-flex align-items-center justify-content-center">
-        <a href="index.html" class="company_name d-flex">
+        <a href="index.html" id="company_name" class="d-flex">
             <h1 class="d-none d-sm-block my-auto mx-2">F.C.</h1>
             <img class="m-auto" src="assets/images/badge1.png" alt="F.C. Index logo.">
             <h1 class="d-none d-sm-block my-auto mx-2">INDEX</h1>
         </a>
     </header>
-    
-    <footer>
-        
+
+    <section id="search-form">
+    </section>
+    <section id="search-results">
+    </section>
+    <section id="club-info">
+    </section>
+
+    <footer class="d-flex flex-column align-items-center justify-content-center">
+        <div class="my-1">
+            <span class="d-block d-md-inline mx-1 my-1 my-md-0">Spotted an error or encountered a problem?</span>
+            <div class="d-block d-md-inline d-flex align-items-center justify-content-center">
+                <span class="mx-1">Let us know:</span>
+                <button class="button-style grey" class="mx-1"><span class="mx-2">Report a Bug</span></button>
+            </div>
+        </div>
+        <div class="d-flex align-items-center my-1">
+            <span class="mx-1">Data provided by:</span>
+            <a id="a_footer" class="mx-1" href="https://www.api-football.com/" target="_blank">
+                <span>API-Football.com</span>
+                <i class="fas fa-futbol"></i>
+            </a>
+        </div>
     </footer>
 </body>
 <!-- footballAPI.js link -->
