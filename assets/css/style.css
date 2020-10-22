@@ -10,6 +10,27 @@ body {
     font-family: 'Exo', sans-serif;
 }
 
+/*----------------------------------------------------------------------------------------------------------Header*/
+
+header {
+    background-color: #0077B6;
+    height: 100px;
+}
+
+header img {
+    max-height: 90px;
+}
+
+.company_name {
+    font-family: 'Krona One', sans-serif;
+    color: #fff;
+}
+
+.company_name:hover {
+    color:#fff;
+    text-decoration: none;
+}
+
 /*----------------------------------------------------------------------------------------------------------Section title here*/
 
 /*------------------------------------------------Sub-section title here*/
