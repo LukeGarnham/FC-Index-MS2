@@ -17,7 +17,7 @@ body {
 /*------------------------------------------------Button styles*/
 
 .button-border  {
-    border-radius: 15px;
+    border-radius: 10px;
     border: 1px solid black;
     color: #fff;
 }
@@ -54,15 +54,13 @@ header img {
     max-height: 100px;
 }
 
-.company_name:hover {
-    color:inherit;
-    text-decoration: none;
-}
-
 /*----------------------------------------------------------------------------------------------------------Search Form Section*/
 
-.search-form label {
-    font-weight: bold;
+#club-search {
+    border: 1px solid #828a95;
+    border-radius: 10px;
+    width: 50vw;
+    min-width: 275px;
 }
 /*----------------------------------------------------------------------------------------------------------Footer*/
 
