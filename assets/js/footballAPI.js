@@ -94,13 +94,13 @@ function clubSearch() {
             let clubs = apiResults.api.teams;
             // Create a new table row for each club returned by the API.
             for (i=0; i<clubs.length; i++) {
-                resultsTableBody += '
+                resultsTableBody.innerHTML += `
                     <tr>
                         <td>${clubs[i].name}</td>
                         <td>${clubs[i].country}</td>
                         <td><img src="${clubs[i].logo}" alt="Club badge"></td>
                     </tr>
-                ';
+                `;
             };
 
             // Hide the error message and unhide the results table
