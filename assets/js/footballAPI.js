@@ -44,20 +44,20 @@ function removeShadow(button) {
 // ----------------------------------------------------------------------------------------------------------Extract API data
 // The below xhr request was orginally copied from the API documentation but then amended for the purposes of this project:
 // https://rapidapi.com/api-sports/api/api-football/endpoints
-const data = null;
+// const data = null;
 
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+// const xhr = new XMLHttpRequest();
+// xhr.withCredentials = true;
 
-xhr.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		console.log(this.responseText);
-	}
-});
+// xhr.addEventListener("readystatechange", function () {
+// 	if (this.readyState === this.DONE) {
+// 		console.log(this.responseText);
+// 	}
+// });
 
-xhr.open("GET", "https://rapidapi.p.rapidapi.com/v2/teams/search/real_m");
-xhr.setRequestHeader("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
-xhr.setRequestHeader("x-rapidapi-key", "03db490835mshd5eaf0436ca3429p1687b6jsnf4663d1db28c");
+// xhr.open("GET", "https://rapidapi.p.rapidapi.com/v2/teams/search/real_m");
+// xhr.setRequestHeader("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
+// xhr.setRequestHeader("x-rapidapi-key", "03db490835mshd5eaf0436ca3429p1687b6jsnf4663d1db28c");
 
-xhr.send(data);
+// xhr.send(data);
 
