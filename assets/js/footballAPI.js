@@ -78,8 +78,8 @@ function clubSearch() {
     getAPIData(searchString, function(apiResults) {
         // Reset the error message and results table body to be empty
 
-        // document.getElementById("error-message").innerHTML = "";
-        // document.getElementById("results-table-body").innerHTML = "";
+        document.getElementById("error-message").innerHTML = "";
+        document.getElementById("results-table-body").innerHTML = "";
 
         // Check if the API results are empty
         if (apiResults.api.results == 0) {
@@ -96,9 +96,9 @@ function clubSearch() {
             for (i=0; i<clubs.length; i++) {
                 resultsTableBody.innerHTML += `
                     <tr>
-                        <td>${clubs[i].name}</td>
-                        <td>${clubs[i].country}</td>
-                        <td><img src="${clubs[i].logo}" alt="Club badge"></td>
+                        <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
+                        <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
+                        <td class="align-middle"><img src="${clubs[i].logo}" alt="Club badge"></td>
                     </tr>
                 `;
             };
@@ -113,3 +113,11 @@ function clubSearch() {
     });
 };
 
+// This function checks if the data returned by the API is null and returns a statement if it is
+function nullDataCheck(data) {
+    if (data == null) {
+        return "Sorry, no data found.";
+    } else {
+        return data;
+    };
+};
