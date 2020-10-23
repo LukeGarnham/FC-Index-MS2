@@ -15,6 +15,28 @@ document.getElementById("club-search-button").addEventListener("mouseout", funct
 // Search for club and call the API via the teamSearch function
 document.getElementById("club-search-button").addEventListener("click", clubSearch);
 
+// ------------------------------------------------Club Search Input - search when user presses Enter
+document.getElementById("club-search").addEventListener("keydown", function(event) {
+    if (event.keycode === 13) {
+        clubSearch();
+    };
+});
+
+// ------------------------------------------------New Search Button
+
+document.getElementById("new-search-button").addEventListener("click", function returnToResults() {
+    document.getElementById("search-results").classList.add("hide");
+    document.getElementById("club-info").classList.add("hide");
+    document.getElementById("club-search").value=null;
+});
+
+// ------------------------------------------------Return to Search Results Button
+
+document.getElementById("view-results-button").addEventListener("click", function returnToResults() {
+    document.getElementById("club-info").classList.add("hide");
+    document.getElementById("search-results").classList.remove("hide");
+});
+
 // ------------------------------------------------Report Bug Button in footer
 // Add shadow effect on mouse over
 document.getElementById("report-bug-button").addEventListener("mouseover", function getElement() {
@@ -29,11 +51,11 @@ document.getElementById("report-bug-button").addEventListener("mouseout", functi
 });
 
 // Change button to grey when clicked
-// This will also need to launch modal to email query - TO BE BUILT - once done the button will return to blue
+// This will also need to launch modal to email query - TO BE BUILT - once done the button
 document.getElementById("report-bug-button").addEventListener("click", function getElement() {
-    let el = document.getElementById("report-bug-button");
-    el.classList.remove("blue");
-    el.classList.add("grey");
+    // let el = document.getElementById("report-bug-button");
+    // el.classList.remove("blue");
+    // el.classList.add("grey");
 });
 
 function addShadow(button) {
@@ -43,9 +65,6 @@ function addShadow(button) {
 function removeShadow(button) {
     button.classList.remove("shadow-effect");
 };
-
-
-
 
 // ----------------------------------------------------------------------------------------------------------Extract API data
 // The below xhr request was orginally copied from the API documentation but then amended for the purposes of this project:
@@ -110,20 +129,17 @@ function clubSearch() {
                         console.log(clubResults);
                         // Populate the club-info section
                         document.getElementById("club-logo").innerHTML=`<img src="${clubResults.logo}" aria-label="Club badge.">`;
-                        document.getElementById("club-name").innerHTML=`${clubResults.name}`;
-                        document.getElementById("club-location").innerHTML=`${clubResults.venue_city}`;
-                        document.getElementById("club-founded").innerHTML=`${clubResults.founded}`;
-                        document.getElementById("club-stadium-name").innerHTML=`${clubResults.venue_name}`;
-                        document.getElementById("club-stadium-capacity").innerHTML=`${clubResults.venue_capacity}`;
+                        document.getElementById("club-name").innerHTML=`${nullDataCheck(clubResults.name)}`;
+                        document.getElementById("club-location").innerHTML=`${clubLocation(clubResults.venue_city, clubResults.country)}`;
+                        document.getElementById("club-founded").innerHTML=`${nullDataCheck(clubResults.founded)}`;
+                        document.getElementById("club-stadium-name").innerHTML=`${nullDataCheck(clubResults.venue_name)}`;
+                        document.getElementById("club-stadium-capacity").innerHTML=`${nullDataCheck(clubResults.venue_capacity)}`;
                         // Hide the search results section and unhide the club-info section
                         document.getElementById("search-results").classList.add("hide");
                         document.getElementById("club-info").classList.remove("hide");
                     };
                 })(clubs[i]);
             };
-
-
-
             // Unhide the results table
             document.getElementById("results-table").classList.remove("hide");
         };
@@ -138,5 +154,14 @@ function nullDataCheck(data) {
         return "Sorry, no data found.";
     } else {
         return data;
+    };
+};
+
+// This function checks if there is a city value returned in the API.  If so, it adds the country, otherwise just the country is returned
+function clubLocation(city, country) {
+    if (city == null) {
+        return country;
+    } else {
+        return city + ", " + country;
     };
 };
