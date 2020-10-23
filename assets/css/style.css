@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Exo', sans-serif;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .company_name {
@@ -22,7 +23,7 @@ body {
     color: #fff;
 }
 
-.button-shadow {
+.shadow-effect {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -37,6 +38,12 @@ body {
 
 .blue {
     background-color: #0077b6;
+}
+
+/*------------------------------------------------Section hidden*/
+
+.hide {
+    display: none;
 }
 
 /*----------------------------------------------------------------------------------------------------------Header*/
@@ -56,16 +63,38 @@ header img {
 
 /*----------------------------------------------------------------------------------------------------------Search Form Section*/
 
-#search-form {
-    background-color: rgba(0, 0, 0, 0.08);
-}
-
 #club-search {
     border: 1px solid #828a95;
     border-radius: 10px;
     width: 33vw;
     min-width: 275px;
 }
+
+/*----------------------------------------------------------------------------------------------------------Search Results Section*/
+
+#search-results table {
+    /* border: 1px solid #828a95;
+    border-color: #828a95;
+    border-radius: 10px; */
+}
+
+#search-results thead {
+    background-color: #d64933;
+    color: #fff;
+}
+
+table img {
+    max-height: 60px;
+}
+
+/*----------------------------------------------------------------------------------------------------------Club Info Section*/
+
+#team-card {
+    background-color: #fff;
+    border: 1px solid #828a95;
+    border-radius: 10px;
+}
+
 /*----------------------------------------------------------------------------------------------------------Footer*/
 
 footer {

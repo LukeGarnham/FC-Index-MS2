@@ -34,11 +34,11 @@ document.getElementById("report-bug-button").addEventListener("click", function 
 });
 
 function addShadow(button) {
-    button.classList.add("button-shadow");
+    button.classList.add("shadow-effect");
 };
 
 function removeShadow(button) {
-    button.classList.remove("button-shadow");
+    button.classList.remove("shadow-effect");
 };
 
 // ----------------------------------------------------------------------------------------------------------Extract API data
