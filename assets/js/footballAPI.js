@@ -13,7 +13,7 @@ document.getElementById("club-search-button").addEventListener("mouseout", funct
 });
 
 // Search for club and call the API via the teamSearch function
-document.getElementById("club-search-button").addEventListener("click", teamSearch);
+document.getElementById("club-search-button").addEventListener("click", clubSearch);
 
 // ------------------------------------------------Report Bug Button in footer
 // Add shadow effect on mouse over
@@ -68,23 +68,45 @@ function getAPIData(clubName, cb) {
     };
 };
 
-function teamSearch() {
+// ------------------------------------------------teamSearch (triggered by clicking the club-search-button)
+function clubSearch() {
     // Get the search string from the search input box
     let searchString = document.getElementById("club-search").value;
     // Replace any spaces with underscores and make string all lower case
     searchString = searchString.replace(/ /g, "_").toLowerCase();
     // Enter the search string into the getAPIData function and create another function to do something with the results.
     getAPIData(searchString, function(apiResults) {
-        // Reset the error message and results to be empty
+        // Reset the error message and results table body to be empty
 
         // document.getElementById("error-message").innerHTML = "";
-        // document.getElementById("results-table").innerHTML = "";
+        // document.getElementById("results-table-body").innerHTML = "";
 
+        // Check if the API results are empty
         if (apiResults.api.results == 0) {
+            // If so, display an error message
             document.getElementById("error-message").innerHTML = "Sorry, no teams found.  Please check the spelling or try searching for a different team.";
+            // Hide the results table and unhide the error message
+            document.getElementById("error-message").classList.remove("hide");
+            document.getElementById("results-table").classList.add("hide");
         } else {
-            console.log(apiResults);
-        }
+            // Otherwise build the results table body
+            let resultsTableBody = document.getElementById("results-table-body");
+            let clubs = apiResults.api.teams;
+            // Create a new table row for each club returned by the API.
+            for (i=0; i<clubs.length; i++) {
+                resultsTableBody += '
+                    <tr>
+                        <td>${clubs[i].name}</td>
+                        <td>${clubs[i].country}</td>
+                        <td><img src="${clubs[i].logo}" alt="Club badge"></td>
+                    </tr>
+                ';
+            };
+
+            // Hide the error message and unhide the results table
+            document.getElementById("error-message").classList.add("hide");
+            document.getElementById("results-table").classList.remove("hide");
+        };
 
         // Unhide the search-results section.
         document.getElementById("search-results").classList.remove("hide");
