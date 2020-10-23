@@ -76,38 +76,57 @@ function clubSearch() {
     searchString = searchString.replace(/ /g, "_").toLowerCase();
     // Enter the search string into the getAPIData function and create another function to do something with the results.
     getAPIData(searchString, function(apiResults) {
-        // Reset the error message and results table body to be empty
-
-        document.getElementById("error-message").innerHTML = "";
+        // Reset the message and results table body to be empty
+        document.getElementById("message").innerHTML = "";
         document.getElementById("results-table-body").innerHTML = "";
-
         // Check if the API results are empty
         if (apiResults.api.results == 0) {
             // If so, display an error message
-            document.getElementById("error-message").innerHTML = "Sorry, no teams found.  Please check the spelling or try searching for a different team.";
-            // Hide the results table and unhide the error message
-            document.getElementById("error-message").classList.remove("hide");
+            document.getElementById("message").innerHTML = "Sorry, no teams found.  Please check the spelling or try searching for a different team.";
+            // Hide the results table
             document.getElementById("results-table").classList.add("hide");
         } else {
-            // Otherwise build the results table body
+            // Otherwise display a message and build the results table body
+            document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
             let resultsTableBody = document.getElementById("results-table-body");
             let clubs = apiResults.api.teams;
             // Create a new table row for each club returned by the API.
-            for (i=0; i<clubs.length; i++) {
+            for (let i=0; i<clubs.length; i++) {
                 resultsTableBody.innerHTML += `
-                    <tr>
+                    <tr class="club-list">
                         <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
                         <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
                         <td class="align-middle"><img src="${clubs[i].logo}" alt="Club badge"></td>
                     </tr>
                 `;
             };
+            // Need to create onclick events for all of the club-list table rows
+            let clubList = document.getElementsByClassName("club-list");
+            // Create a second for loop which iterates over all club-list class names and runs a function on click
+            // Solved by referencing the third method explained on this website:  http://www.howtocreate.co.uk/referencedvariables.html            
+            for (let i=0; i<clubList.length; i++) {
+                clubList[i].onclick = (function(clubResults) {
+                    return function() {
+                        console.log(clubResults);
+                        // Populate the club-info section
+                        document.getElementById("club-logo").innerHTML=`<img src="${clubResults.logo}" aria-label="Club badge.">`;
+                        document.getElementById("club-name").innerHTML=`${clubResults.name}`;
+                        document.getElementById("club-location").innerHTML=`${clubResults.venue_city}`;
+                        document.getElementById("club-founded").innerHTML=`${clubResults.founded}`;
+                        document.getElementById("club-stadium-name").innerHTML=`${clubResults.venue_name}`;
+                        document.getElementById("club-stadium-capacity").innerHTML=`${clubResults.venue_capacity}`;
+                        // Hide the search results section and unhide the club-info section
+                        document.getElementById("search-results").classList.add("hide");
+                        document.getElementById("club-info").classList.remove("hide");
+                    };
+                })(clubs[i]);
+            };
 
-            // Hide the error message and unhide the results table
-            document.getElementById("error-message").classList.add("hide");
+
+
+            // Unhide the results table
             document.getElementById("results-table").classList.remove("hide");
         };
-
         // Unhide the search-results section.
         document.getElementById("search-results").classList.remove("hide");
     });
