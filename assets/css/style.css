@@ -33,7 +33,6 @@ body {
 
 .grey {
     background-color: #828a95;
-    
 }
 
 .blue {
@@ -72,12 +71,6 @@ header img {
 
 /*----------------------------------------------------------------------------------------------------------Search Results Section*/
 
-#search-results table {
-    /* border: 1px solid #828a95;
-    border-color: #828a95;
-    border-radius: 10px; */
-}
-
 #search-results thead {
     background-color: #d64933;
     color: #fff;
@@ -85,6 +78,13 @@ header img {
 
 table img {
     max-height: 40px;
+}
+
+.highlight-table-row {
+    background-color: #0077B6 !important;
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 /*----------------------------------------------------------------------------------------------------------Club Info Section*/

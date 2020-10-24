@@ -1,3 +1,16 @@
+// ----------------------------------------------------------------------------------------------------------Event listeners for styling club list results
+// Utilised the solution provided here to write this listener:  https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
+function tableRowEffect () {
+    document.querySelectorAll(".club-list").forEach(item => {
+        item.addEventListener("mouseover", event => {
+            item.classList.add("shadow-effect", "highlight-table-row");
+        });
+        item.addEventListener("mouseout", event => {
+            item.classList.remove("shadow-effect", "highlight-table-row");
+        });
+    });
+};
+
 // ----------------------------------------------------------------------------------------------------------Event listeners for buttons
 // ------------------------------------------------Club Search Button
 // Add shadow effect on mouse over
@@ -74,22 +87,22 @@ function removeShadow(button) {
 // The below xhr request was orginally copied from the API documentation but then amended for the purposes of this project:
 // https://rapidapi.com/api-sports/api/api-football/endpoints
 
-// function getAPIData(clubName, cb) {
+function getAPIData(clubName, cb) {
 
-//     const xhr = new XMLHttpRequest();
-//     xhr.withCredentials = true;
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
 
-//     xhr.open("GET", "https://rapidapi.p.rapidapi.com/v2/teams/search/" + clubName);
-//     xhr.setRequestHeader("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
-//     xhr.setRequestHeader("x-rapidapi-key", "03db490835mshd5eaf0436ca3429p1687b6jsnf4663d1db28c");
-//     xhr.send();
+    xhr.open("GET", "https://rapidapi.p.rapidapi.com/v2/teams/search/" + clubName);
+    xhr.setRequestHeader("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "03db490835mshd5eaf0436ca3429p1687b6jsnf4663d1db28c");
+    xhr.send();
 
-//     xhr.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             cb(JSON.parse(this.responseText));
-//         };
-//     };
-// };
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            cb(JSON.parse(this.responseText));
+        };
+    };
+};
 
 // ------------------------------------------------teamSearch (triggered by clicking the club-search-button)
 function clubSearch(searchString) {
@@ -131,7 +144,6 @@ function clubSearch(searchString) {
                 for (let i=0; i<clubList.length; i++) {
                     clubList[i].onclick = (function(clubResults) {
                         return function() {
-                            console.log(clubResults);
                             // Populate the club-info section
                             document.getElementById("club-logo").innerHTML=`<img src="${clubResults.logo}" aria-label="Club badge.">`;
                             document.getElementById("club-name").innerHTML=`${nullDataCheck(clubResults.name)}`;
@@ -145,6 +157,7 @@ function clubSearch(searchString) {
                         };
                     })(clubs[i]);
                 };
+                tableRowEffect();
                 // Unhide the results table
                 document.getElementById("results-table").classList.remove("hide");
             };
