@@ -12,6 +12,7 @@
     <title>F.C. Index</title>
 </head>
 <body>
+    <!-- Header section contains logo on small screens and text appears on medium screens up.  Both act as link back to the page i.e. they reset the page. -->
     <header class="d-flex align-items-center justify-content-center">
         <a href="index.html" class="company_name text-decoration-none d-flex">
             <h1 class="d-none d-sm-block my-auto mx-2">F.C.</h1>
@@ -20,17 +21,19 @@
         </a>
     </header>
 
+    <!-- This section remains visible at all times informing the users what the purpose of the page is and allowing them to retun to perform more searches -->
     <section id="search-form">
         <div class="container text-center">
             <h2 class="pt-5 mb-3">Welcome to Football Club Index.</h2>
             <h3 class="my-3">Search for football clubs from around the world to find out more information!</h3>
-            <form class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
-                <label for="club-search"><h4>Search for a football club:</h4></label>
+            <form id="form-test" class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
+                <h4><label for="club-search">Search for a football club:</label></h4>
                 <input name="club-search" type="text" placeholder="Enter a club name" id="club-search" class="d-block d-md-inline text-center px-2">
                 <input type="button" value="Search" id="club-search-button" class="button-border orange mx-auto mt-3 px-3">
             </form>
         </div>
     </section>
+    <!-- The results of any searches will appear in this section.  This will only appear when a search is conducted and will otherwise not be visible -->
     <section id="search-results" class="hide">
         <div class="container text-center pb-5">
             <h3 class="mb-3">Results:</h3>
@@ -48,6 +51,7 @@
             </table>
         </div>
     </section>
+    <!-- This section will show the club information and will only be visible when the users do a search and click on a club to view more info. -->
     <section id="club-info" class="hide">
         <div class="container text-center align-items-center justify-content-center pb-5">
             <div id="club-logo" class="my-3"></div>
@@ -104,68 +108,7 @@
             </div>
         </div>
     </section>
-
-    <section id="club-info" class="">
-        <div class="container text-center align-items-center justify-content-center pb-5">
-            <div id="club-logo" class="my-3"></div>
-            <div id="club-card" class="shadow-effect py-4">
-                <div class="row py-2">
-                    <div class="col">
-                        <h3>Club Information:</h3>
-                    </div>
-                </div>
-                <div class="row align-items-center py-2">
-                    <div class="col-6 pl-5">
-                        <i class="fas fa-shield-alt d-block d-md-inline mb-1 mb-md-0 mr-md-1"></i>
-                        <h6 class="d-block d-md-inline">Team Name:</h6>
-                    </div>
-                    <div id="club-name" class="text-break col-6 pr-5">
-                        A veryveryveryvery long club name
-                    </div>
-                </div>
-                <div class="row align-items-center py-2">
-                    <div class="col-6 pl-5">
-                        <i class="fas fa-map-marked-alt d-block d-md-inline mb-1 mb-md-0 mr-md-1"></i>
-                        <h6 class="d-block d-md-inline">Location:</h6>
-                    </div>
-                    <div id="club-location" class="text-break col-6 pr-5">
-                        A veryveryveryvery long club name
-                    </div>
-                </div>
-                <div class="row align-items-center py-2">
-                    <div class="col-6 pl-5">
-                        <i class="far fa-calendar-alt d-block d-md-inline mb-1 mb-md-0 mr-md-1"></i>
-                        <h6 class="d-block d-md-inline">Founded:</h6>
-                    </div>
-                    <div id="club-founded" class="col-6 pr-5">
-                        A veryveryveryvery long club name
-                    </div>
-                </div>
-                <div class="row align-items-center py-2">
-                    <div class="col-6 pl-5">
-                        <i class="fas fa-home d-block d-md-inline mb-1 mb-md-0 mr-md-1"></i>
-                        <h6 class="d-block d-md-inline">Stadium Name:</h6>
-                    </div>
-                    <div id="club-stadium-name" class="col-6 pr-5">
-                    </div>
-                </div>
-                <div class="row align-items-center py-2">
-                    <div class="col-6 pl-5">
-                        <i class="fas fa-hashtag d-block d-md-inline mb-1 mb-md-0 mr-md-1"></i>
-                        <h6 class="d-block d-md-inline">Stadium Capacity:</h6>
-                    </div>
-                    <div id="club-stadium-capacity" class="col-6 pr-5">
-                    </div>
-                </div>
-            </div>
-            <div class="d-block d-md-inline d-flex flex-column align-items-center justify-content-center">
-                <button id="new-search-button" class="button-border blue mt-5 mx-4 px-3">New Search</button>
-                <button id="view-results-button" class="button-border orange mt-3 mx-4 px-3">Back to Search Results</button>
-            </div>
-        </div>
-    </section>
-
-
+    <!-- The footer contains a button so users can report any issues and a link to the API used. -->
     <footer class="d-flex flex-column align-items-center justify-content-center">
         <div class="my-1">
             <span class="d-block d-md-inline mx-1 my-1 my-md-0">Spotted an error or encountered a problem?</span>
