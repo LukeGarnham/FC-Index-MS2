@@ -1,4 +1,6 @@
-// ----------------------------------------------------------------------------------------------------------Event listeners for styling club list results
+// ----------------------------------------------------------------------------------------------------------Event listeners for hover on/off styling elements
+// ------------------------------------------------Results table rows
+
 // Utilised the solution provided here to write this listener:  https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
 function tableRowEffect () {
     document.querySelectorAll(".club-list").forEach(item => {
@@ -11,31 +13,34 @@ function tableRowEffect () {
     });
 };
 
-// ----------------------------------------------------------------------------------------------------------Event listeners for buttons
-// ------------------------------------------------Club Search Button
-// Add shadow effect on mouse over
-document.getElementById("club-search-button").addEventListener("mouseover", function getElement() {
-    let el = document.getElementById("club-search-button");
-    addShadow(el);
+// ------------------------------------------------Buttons
+
+document.querySelectorAll(".button-border").forEach(item => {
+    item.addEventListener("mouseover", event => {
+        item.classList.add("shadow-effect");
+    });
+    item.addEventListener("mouseout", event => {
+        item.classList.remove("shadow-effect");
+    });
 });
 
-// Add shadow effect on mouse off
-document.getElementById("club-search-button").addEventListener("mouseout", function getElement() {
-    let el = document.getElementById("club-search-button");
-    removeShadow(el);
-});
+// ----------------------------------------------------------------------------------------------------------Event listeners for events
+// ------------------------------------------------Club Search
 
-// Search for club and call the API via the teamSearch function
+// Search when user clicks search button
 document.getElementById("club-search-button").addEventListener("click", function() {
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
+    // Search for club and call the API via the clubSearch function
     clubSearch(input);
 });
-// ------------------------------------------------Club Search Input - search when user presses Enter
+
+// Search when user presses Enter
 document.getElementById("form-test").addEventListener("submit", function(event) {
     event.preventDefault();
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
+    // Search for club and call the API via the clubSearch function
     clubSearch(input);
 });
 
@@ -55,18 +60,6 @@ document.getElementById("view-results-button").addEventListener("click", functio
 });
 
 // ------------------------------------------------Report Bug Button in footer
-// Add shadow effect on mouse over
-document.getElementById("report-bug-button").addEventListener("mouseover", function getElement() {
-    let el = document.getElementById("report-bug-button");
-    addShadow(el);
-});
-
-// Add shadow effect on mouse off
-document.getElementById("report-bug-button").addEventListener("mouseout", function getElement() {
-    let el = document.getElementById("report-bug-button");
-    removeShadow(el);
-});
-
 // Change button to grey when clicked
 // This will also need to launch modal to email query - TO BE BUILT - once done the button
 document.getElementById("report-bug-button").addEventListener("click", function getElement() {
@@ -74,15 +67,6 @@ document.getElementById("report-bug-button").addEventListener("click", function 
     // el.classList.remove("blue");
     // el.classList.add("grey");
 });
-
-function addShadow(button) {
-    button.classList.add("shadow-effect");
-};
-
-function removeShadow(button) {
-    button.classList.remove("shadow-effect");
-};
-
 // ----------------------------------------------------------------------------------------------------------Extract API data
 // The below xhr request was orginally copied from the API documentation but then amended for the purposes of this project:
 // https://rapidapi.com/api-sports/api/api-football/endpoints
@@ -167,6 +151,8 @@ function clubSearch(searchString) {
     };
 };
 
+
+// ------------------------------------------------API Data checks
 // This function checks if the data returned by the API is null and returns a statement if it is
 function nullDataCheck(data) {
     if (data == null) {
