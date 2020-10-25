@@ -31,10 +31,6 @@ body {
     background-color: #d64933;
 }
 
-.grey {
-    background-color: #828a95;
-}
-
 .blue {
     background-color: #0077b6;
 }
@@ -130,7 +126,7 @@ footer {
 /* The below CSS is sourced from: https://www.w3schools.com/howto/howto_css_modals.asp */
 #report-bug-modal-content {
     background-color: #fff;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     border: 1px solid #000;
     border-radius: 10px;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -140,6 +136,10 @@ footer {
     background-color: #0077B6;
     color: #fff;
     border-radius: 10px 10px 0 0;
+}
+
+#close-modal-icon {
+    font-size: x-large;
 }
 
 /*----------------------------------------------------------------------------------------------------------Section title here*/

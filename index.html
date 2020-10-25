@@ -26,7 +26,7 @@
         <div class="container text-center">
             <h2 class="pt-5 mb-3">Welcome to Football Club Index.</h2>
             <h3 class="my-3">Search for football clubs from around the world to find out more information!</h3>
-            <form id="form-test" class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
+            <form id="club-search-form" class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
                 <h4><label for="club-search">Search for a football club:</label></h4>
                 <input name="club-search" type="text" placeholder="Enter a club name" id="club-search" class="d-block d-md-inline text-center px-2">
                 <input type="button" value="Search" id="club-search-button" class="button-border orange mx-auto mt-3 px-3">
@@ -126,17 +126,42 @@
         </div>
     </footer>
     <!-- Modal to open when Report a Bug button is clicked -->
-    <div id="report-bug-modal" class="text-center align-items-center justify-content-center">
+    <div id="report-bug-modal" class="align-items-center justify-content-center">
         <div id="report-bug-modal-content" class="container">
             <div id="modal-header" class="row">
-                <div class="col m-3">
+                <div class="col m-3 p-0">
                     <img class="small-img align-middle d-none d-md-inline" src="assets/images/badge1.png" alt="F.C. Index logo.">
-                    <h2 class="align-middle d-inline ml-md-3">Report a Bug</h2>
+                    <h3 class="align-middle d-inline ml-md-3">Report a Bug</h3>
                 </div>
+                <i id="close-modal-icon" class="fas fa-window-close float-right mt-3 mr-3"></i>
             </div>
             <form class="m-3">
-                <input type="text">
-                <input type="submit" value="Submit">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input class="form-control" name="name" type="text" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" name="email" type="email" placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="report-bug-error-type">What type of error would you like to report?:</label>
+                    <select class="form-control" name="report-bug-error-type" id="report-bug-error-type">
+                        <option value="" selected disabled>Please select</option>
+                        <option value="club_data_error">Club data error</option>
+                        <option value="webpage_error">Webpage error</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="club-name">Please enter the club name:</label>
+                    <input class="form-control" name="club-name" type="text" placeholder="Enter club name">
+                </div>
+                <div class="form-group">
+                    <label for="bug-description">Please provide details of the bug:</label>
+                    <textarea class="form-control" name="bug-description" id="bug-description" rows="6"></textarea>
+                </div>
+                <input class="button-border blue mx-auto mt-3 px-3" type="submit" value="Report Bug">
+                <button id="close-modal-button" class="button-border orange float-right mx-auto mt-3 px-3">Close</button>
             </form>
         </div>
     </div>
