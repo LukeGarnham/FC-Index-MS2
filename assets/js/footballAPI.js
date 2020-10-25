@@ -115,9 +115,9 @@ function clubSearch(searchString) {
                 for (let i=0; i<clubs.length; i++) {
                     resultsTableBody.innerHTML += `
                         <tr class="club-list">
-                            <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
-                            <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
-                            <td class="align-middle"><img src="${clubs[i].logo}" alt="Club badge"></td>
+                            <td class="align-middle small-img">${nullDataCheck(clubs[i].name)}</td>
+                            <td class="align-middle small-img">${nullDataCheck(clubs[i].country)}</td>
+                            <td class="align-middle small-img"><img src="${clubs[i].logo}" alt="Club badge"></td>
                         </tr>
                     `;
                 };
