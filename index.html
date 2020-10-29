@@ -29,6 +29,7 @@
             <form id="club-search-form" class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
                 <h4><label for="club-search">Search for a football club:</label></h4>
                 <input name="club-search" type="text" placeholder="Enter a club name" id="club-search" class="d-block d-md-inline text-center px-2">
+                <p id="search-string-message" class="my-1"></p>
                 <input type="button" value="Search" id="club-search-button" class="button-border orange mx-auto mt-3 px-3">
             </form>
         </div>
@@ -126,7 +127,7 @@
         </div>
     </footer>
     <!-- Modal to open when Report a Bug button is clicked -->
-    <div id="report-bug-modal" class="align-items-center justify-content-center">
+    <div id="report-bug-modal" class="align-items-center justify-content-center hide">
         <div id="report-bug-modal-content" class="container">
             <div id="modal-header" class="row">
                 <div class="col m-3 p-0">

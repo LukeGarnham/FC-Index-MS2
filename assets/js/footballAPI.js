@@ -24,6 +24,17 @@ document.querySelectorAll(".button-border").forEach(item => {
     });
 });
 
+// ----------------------------------------------------------------------------------------------------------Event listeners for key input
+// ------------------------------------------------Club Search
+document.getElementById("club-search").addEventListener("keyup", function() {
+    let searchString = document.getElementById("club-search").value;
+    if (searchString.length > 0 && searchString.length < 4) {
+        document.getElementById("search-string-message").innerHTML = "Your search string must be at least 4 characters long.";
+    } else {
+        document.getElementById("search-string-message").innerHTML = "";
+    };
+});
+
 // ----------------------------------------------------------------------------------------------------------Event listeners for clicks
 // ------------------------------------------------Club Search
 
@@ -67,13 +78,13 @@ document.getElementById("report-bug-button").addEventListener("click", function 
 });
 
 // ------------------------------------------------Close Modal
-document.getElementById("close-modal-icon").addEventListener("click", closeModal);
+document.getElementById("close-modal-icon").addEventListener("click", closeModal());
 
-document.getElementById("close-modal-button").addEventListener("click", closeModal);
+document.getElementById("close-modal-button").addEventListener("click", closeModal());
 
-function closeModal() {
+function closeModal(event) {
     document.getElementById("report-bug-modal").classList.add("hide");
-}
+};
 
 // ----------------------------------------------------------------------------------------------------------Extract API data
 // The below xhr request was orginally copied from the API documentation but then amended for the purposes of this project:
@@ -99,7 +110,7 @@ function getAPIData(clubName, cb) {
 // ------------------------------------------------teamSearch (triggered by clicking the club-search-button)
 function clubSearch(searchString) {
     if (searchString.length < 4) {
-        alert("Your search string must be at least 4 characters long.  Please try again.")
+        
     } else {
         // Replace any spaces with underscores and make string all lower case
         searchString = searchString.replace(/ /g, "_").toLowerCase();
