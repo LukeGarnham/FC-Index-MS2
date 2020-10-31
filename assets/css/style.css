@@ -86,7 +86,7 @@ header img {
     background-color: #0077B6;
     color: #fff;
     text-decoration: underline;
-    font-weight: bold;
+    cursor: pointer;
 }
 
 /*----------------------------------------------------------------------------------------------------------Club Info Section*/

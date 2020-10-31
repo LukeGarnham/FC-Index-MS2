@@ -99,6 +99,8 @@ function clubSearch(searchString) {
                 document.getElementById("message").innerHTML = "Sorry, no teams found.  Please check the spelling or try searching for a different team.";
                 // Hide the results table
                 document.getElementById("results-table").classList.add("hide");
+                // Hide the club info section
+                document.getElementById("club-info").classList.add("hide");
             } else {
                 // Otherwise display a message and build the results table body
                 document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
@@ -107,7 +109,7 @@ function clubSearch(searchString) {
                 // Create a new table row for each club returned by the API.
                 for (let i=0; i<clubs.length; i++) {
                     resultsTableBody.innerHTML += `
-                        <tr class="club-list">
+                        <tr class="club-list clickable-row">
                             <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
                             <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
                             <td class="align-middle"><img class="small-img" src="${clubs[i].logo}" alt="Club badge"></td>
