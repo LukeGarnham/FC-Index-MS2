@@ -1,29 +1,3 @@
-// ----------------------------------------------------------------------------------------------------------Event listeners for hover on/off styling elements
-// ------------------------------------------------Results table rows
-
-// Utilised the solution provided here to write this listener:  https://flaviocopes.com/how-to-add-event-listener-multiple-elements-javascript/
-function tableRowEffect () {
-    document.querySelectorAll(".club-list").forEach(item => {
-        item.addEventListener("mouseover", event => {
-            item.classList.add("shadow-effect", "highlight-table-row");
-        });
-        item.addEventListener("mouseout", event => {
-            item.classList.remove("shadow-effect", "highlight-table-row");
-        });
-    });
-};
-
-// ------------------------------------------------Buttons
-
-document.querySelectorAll(".button-border").forEach(item => {
-    item.addEventListener("mouseover", event => {
-        item.classList.add("shadow-effect");
-    });
-    item.addEventListener("mouseout", event => {
-        item.classList.remove("shadow-effect");
-    });
-});
-
 // ----------------------------------------------------------------------------------------------------------Event listeners for key input
 // ------------------------------------------------Club Search
 document.getElementById("club-search").addEventListener("keyup", function() {
@@ -160,7 +134,6 @@ function clubSearch(searchString) {
                         };
                     })(clubs[i]);
                 };
-                tableRowEffect();
                 // Unhide the results table
                 document.getElementById("results-table").classList.remove("hide");
             };

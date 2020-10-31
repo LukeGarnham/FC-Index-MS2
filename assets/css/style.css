@@ -23,16 +23,16 @@ body {
     color: #fff;
 }
 
-.shadow-effect {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
-}
-
 .orange {
     background-color: #d64933;
 }
 
 .blue {
     background-color: #0077b6;
+}
+
+.button-border:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
 /*------------------------------------------------Section hidden*/
@@ -68,6 +68,7 @@ header img {
 #search-string-message {
     color: #d64933;
     font-size: small;
+    min-height: 20px;
 }
 
 /*----------------------------------------------------------------------------------------------------------Search Results Section*/
@@ -81,8 +82,8 @@ header img {
     max-height: 40px;
 }
 
-.highlight-table-row {
-    background-color: #0077B6 !important;
+.table-striped tbody tr:hover {
+    background-color: #0077B6;
     color: #fff;
     text-decoration: underline;
     font-weight: bold;
