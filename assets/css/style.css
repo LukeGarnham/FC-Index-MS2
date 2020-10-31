@@ -148,6 +148,10 @@ footer {
     font-size: x-large;
 }
 
+#close-modal-icon:hover {
+    cursor: pointer;
+}
+
 /*----------------------------------------------------------------------------------------------------------Section title here*/
 
 /*------------------------------------------------Sub-section title here*/
