@@ -19,3 +19,19 @@ function clubLocation(city, country) {
         return city + ", " + country;
     };
 };
+
+// ----------------------------------------------------------------------------------------------------------Validate/clean the data input into the Report a Bug form
+// ------------------------------------------------Check if the club name field has data.
+function clubName(name) {
+    if (name == "") {
+        return "Not applicable";
+    } else {
+        return name;
+    };
+};
+
+// ------------------------------------------------Tidy the error type input
+// Used the solution on this website to help build the below function: https://www.w3resource.com/javascript-exercises/javascript-string-exercise-11.php
+function errorType(errorString) {
+    return errorString;
+}

@@ -45,10 +45,17 @@ document.getElementById("view-results-button").addEventListener("click", functio
 });
 
 // ------------------------------------------------Report Bug Button in footer
-// Change button to grey when clicked
-// This will also need to launch modal to email query - TO BE BUILT - once done the button
+// This will launch the modal
 document.getElementById("report-bug-button").addEventListener("click", function getElement() {
     document.getElementById("report-bug-modal").classList.remove("hide");
+});
+
+// ------------------------------------------------Report Bug Button - Modal
+document.getElementById("report-bug-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let errorType = document.getElementById("reportBugErrorType").value;
+    console.log(errorType);
+    sendMail(this);
 });
 
 // ------------------------------------------------Close Modal
@@ -65,3 +72,13 @@ document.getElementById("close-modal-button").addEventListener("click", function
 function closeModal() {
     document.getElementById("report-bug-modal").classList.add("hide");
 };
+
+// ------------------------------------------------Error Type - Modal
+document.getElementById("reportBugErrorType").addEventListener("change", function() {
+    let formValue = document.getElementById("reportBugErrorType").value;
+    if (formValue === "club_data_error") {
+        document.getElementById("report-bug-club-name").classList.remove("hide");
+    } else {
+        document.getElementById("report-bug-club-name").classList.add("hide");
+    }
+});

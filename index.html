@@ -10,6 +10,15 @@
         <!-- style.css link -->
         <link rel="stylesheet" href="assets/css/style.css" type="text/css">
         <title>F.C. Index</title>
+        <!-- EmailJS link -->
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init("user_jOX7uv5EprloqIxRN7XH7");
+            })();
+        </script>
     </head>
     <body>
         <!-- Header section contains logo on small screens and text appears on medium screens up.  Both act as link back to the page i.e. they reset the page. -->
@@ -136,7 +145,7 @@
                     </div>
                     <i id="close-modal-icon" class="fas fa-window-close float-right mt-3 mr-3"></i>
                 </div>
-                <form class="m-3">
+                <form id="report-bug-form" class="m-3">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input class="form-control" name="name" type="text" placeholder="Enter your name">
@@ -146,22 +155,22 @@
                         <input class="form-control" name="email" type="email" placeholder="Enter your email address">
                     </div>
                     <div class="form-group">
-                        <label for="report-bug-error-type">What type of error would you like to report?:</label>
-                        <select class="form-control" name="report-bug-error-type" id="report-bug-error-type">
+                        <label for="reportBugErrorType">What type of error would you like to report?:</label>
+                        <select class="form-control" name="reportBugErrorType" id="reportBugErrorType">
                             <option value="" selected disabled>Please select</option>
                             <option value="club_data_error">Club data error</option>
                             <option value="webpage_error">Webpage error</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="club-name">Please enter the club name:</label>
-                        <input class="form-control" name="club-name" type="text" placeholder="Enter club name">
+                    <div id="report-bug-club-name" class="form-group hide">
+                        <label for="clubName">Please enter the club name:</label>
+                        <input class="form-control" name="clubName" type="text" placeholder="Enter club name">
                     </div>
                     <div class="form-group">
-                        <label for="bug-description">Please provide details of the bug:</label>
-                        <textarea class="form-control" name="bug-description" id="bug-description" rows="6"></textarea>
+                        <label for="bugDescription">Please provide details of the bug:</label>
+                        <textarea class="form-control" name="bugDescription" id="bugDescription" rows="6"></textarea>
                     </div>
-                    <input class="button-border blue mx-auto mt-3 px-3" type="submit" value="Report Bug">
+                    <input id="send-bug-report-button" class="button-border blue mx-auto mt-3 px-3" type="submit" value="Report Bug">
                     <button id="close-modal-button" class="button-border orange float-right mx-auto mt-3 px-3">Close</button>
                 </form>
             </div>
@@ -172,4 +181,5 @@
     <script src="assets/js/footballAPI.js" type="text/javascript"></script>
     <script src="assets/js/dataValidation.js" type="text/javascript"></script>
     <script src="assets/js/events.js" type="text/javascript"></script>
+    <script src="assets/js/emailJS.js" type="text/javascript"></script>
 </html>
