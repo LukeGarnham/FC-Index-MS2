@@ -54,7 +54,6 @@ document.getElementById("report-bug-button").addEventListener("click", function 
 document.getElementById("report-bug-form").addEventListener("submit", function(event) {
     event.preventDefault();
     let errorType = document.getElementById("reportBugErrorType").value;
-    console.log(errorType);
     sendMail(this);
 });
 

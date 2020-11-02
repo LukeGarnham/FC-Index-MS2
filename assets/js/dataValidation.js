@@ -31,7 +31,14 @@ function clubName(name) {
 };
 
 // ------------------------------------------------Tidy the error type input
-// Used the solution on this website to help build the below function: https://www.w3resource.com/javascript-exercises/javascript-string-exercise-11.php
+// Used the solution on this website to help build the two functions below: https://masteringjs.io/tutorials/fundamentals/capitalize-first-letter#:~:text=Capitalizing%20the%20first%20letter%20of,the%20string%20slice()%20method.&text=The%20first%20part%20converts%20the,the%20rest%20of%20the%20string.
+
 function errorType(errorString) {
-    return errorString;
+    errorString = errorString.replace(/_/g, " ");
+    capatilisedString = errorString.split(" ").map(capitalizeFirstLetter).join(" ");
+    return capatilisedString;
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
