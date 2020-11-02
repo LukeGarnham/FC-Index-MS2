@@ -15,6 +15,11 @@ body {
     font-family: 'Krona One', sans-serif;
 }
 
+.asterix {
+    color: #d64933;
+    font-weight: bold;
+}
+
 /*------------------------------------------------Button styles*/
 
 .button-border  {
