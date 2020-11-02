@@ -1,5 +1,7 @@
 // ----------------------------------------------------------------------------------------------------------Event listeners for key input
 // ------------------------------------------------Club Search
+// This will display a warning message on screen if the user types a string less than 4 characters.
+// Searching for a string of less than 4 characters will not work as per if statement in footballAPI.js
 document.getElementById("club-search").addEventListener("keyup", function() {
     let searchString = document.getElementById("club-search").value;
     if (searchString.length > 0 && searchString.length < 4) {
@@ -12,7 +14,7 @@ document.getElementById("club-search").addEventListener("keyup", function() {
 // ----------------------------------------------------------------------------------------------------------Event listeners for clicks
 // ------------------------------------------------Club Search
 
-// Search when user clicks search button
+// Searches when user clicks search button
 document.getElementById("club-search-button").addEventListener("click", function() {
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
@@ -20,7 +22,7 @@ document.getElementById("club-search-button").addEventListener("click", function
     clubSearch(input);
 });
 
-// Search when user presses Enter
+// Searches when user presses Enter
 document.getElementById("club-search-form").addEventListener("submit", function(event) {
     event.preventDefault();
     // Get the search string from the search input box
@@ -30,7 +32,7 @@ document.getElementById("club-search-form").addEventListener("submit", function(
 });
 
 // ------------------------------------------------New Search Button
-
+// In the club info section, this button will hide the search results and club info sections and clear the previous search value allowing them to perform another search.
 document.getElementById("new-search-button").addEventListener("click", function returnToResults() {
     document.getElementById("search-results").classList.add("hide");
     document.getElementById("club-info").classList.add("hide");
@@ -38,19 +40,20 @@ document.getElementById("new-search-button").addEventListener("click", function 
 });
 
 // ------------------------------------------------Return to Search Results Button
-
+// In the club info section, this button will hide the club info section and unhide the search results section.
 document.getElementById("view-results-button").addEventListener("click", function returnToResults() {
     document.getElementById("club-info").classList.add("hide");
     document.getElementById("search-results").classList.remove("hide");
 });
 
 // ------------------------------------------------Report Bug Button in footer
-// This will launch the modal
+// This button in the footer will launch the Report a Bug modal
 document.getElementById("report-bug-button").addEventListener("click", function getElement() {
     document.getElementById("report-bug-modal").classList.remove("hide");
 });
 
 // ------------------------------------------------Report Bug Button - Modal
+// This button on the modal will submit the form using EmailJS.  See the emailJS.js file for details.
 document.getElementById("report-bug-form").addEventListener("submit", function(event) {
     event.preventDefault();
     let errorType = document.getElementById("reportBugErrorType").value;
@@ -58,17 +61,24 @@ document.getElementById("report-bug-form").addEventListener("submit", function(e
 });
 
 // ------------------------------------------------Close Modal
+// This button is in the top right of the modal.  The function will prevent the button default and call the close modal function.
 document.getElementById("close-modal-icon").addEventListener("click", function(event) {
     event.preventDefault();
     closeModal();
 });
 
+// This button is in the bottom right of the modal.  The function will prevent the button default and call the close modal function.
 document.getElementById("close-modal-button").addEventListener("click", function(event) {
     event.preventDefault();
     closeModal();
 });
 
+// This function closes the modal window.  It ensures that the content visible in the modal returns to default.
+// It hides the report bug success content and unhides the report bug modal (form) content.
+// Finally it hides the modal windown entirely.
 function closeModal() {
+    document.getElementById("report-bug-success").classList.add("hide");
+    document.getElementById("report-bug-modal-content").classList.remove("hide");
     document.getElementById("report-bug-modal").classList.add("hide");
 };
 
@@ -80,4 +90,10 @@ document.getElementById("reportBugErrorType").addEventListener("change", functio
     } else {
         document.getElementById("report-bug-club-name").classList.add("hide");
     }
+});
+
+// ------------------------------------------------Report a Bug Success Button
+// If the Report Bug is successful, a pop-up will notify the user.  This button calls the close modal function.
+document.getElementById("report-bug-success").addEventListener("click",  function() {
+    closeModal();
 });

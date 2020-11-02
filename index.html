@@ -137,8 +137,9 @@
         </footer>
         <!-- Modal to open when Report a Bug button is clicked -->
         <div id="report-bug-modal" class="align-items-center justify-content-center hide">
+            <!-- Defaul modal content is the Report a Bug form -->
             <div id="report-bug-modal-content" class="container">
-                <div id="modal-header" class="row">
+                <div class="row modal-header">
                     <div class="col m-3 p-0">
                         <img class="small-img align-middle d-none d-md-inline" src="assets/images/badge1.png" alt="F.C. Index logo.">
                         <h3 class="align-middle d-inline ml-md-3">Report a Bug</h3>
@@ -173,6 +174,21 @@
                     <input id="send-bug-report-button" class="button-border blue mx-auto mt-3 px-3" type="submit" value="Report Bug">
                     <button id="close-modal-button" class="button-border orange float-right mx-auto mt-3 px-3">Close</button>
                 </form>
+            </div>
+            <!-- Alternative modal content.  Success message to be displayed if Report a Bug form is submitted successfully. -->
+            <div id="report-bug-success" class="container hide">
+                <div class="row modal-header p-0">
+                    <div class="col d-flex align-items-center justify-content-center m-3 p-0">
+                        <img class="small-img align-middle d-none d-md-inline" src="assets/images/badge1.png" alt="F.C. Index logo.">
+                        <h3 class="align-middle d-inline ml-md-3 my-0">Thank you!</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex flex-column align-content-center justify-content-center m-3 p-0">
+                        <p class="text-center">Thank you for reporting a bug.  Your feedback is important to us.</p>
+                        <button id="report-bug-success-button" class="button-border orange mx-auto mt-3 px-3">OK</button>
+                    </div>
+                </div>
             </div>
         </div>
 

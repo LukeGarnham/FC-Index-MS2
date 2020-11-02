@@ -11,11 +11,12 @@ function sendMail(reportBugForm) {
     .then(
         function(response) {
             console.log("Success", response);
+            document.getElementById("report-bug-modal-content").classList.add("hide");
+            document.getElementById("report-bug-success").classList.remove("hide");
         },
         function(error) {
             console.log("Failed", error);
         }
     );    
-    closeModal();
     return false;    
 };
