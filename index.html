@@ -176,7 +176,7 @@
                 </form>
             </div>
             <!-- Alternative modal content.  Success message to be displayed if Report a Bug form is submitted successfully. -->
-            <div id="report-bug-success" class="container hide">
+            <div id="report-bug-success" class="report-bug-notification container hide">
                 <div class="row modal-header p-0">
                     <div class="col d-flex align-items-center justify-content-center m-3 p-0">
                         <img class="small-img align-middle d-none d-md-inline" src="assets/images/badge1.png" alt="F.C. Index logo.">
@@ -187,6 +187,21 @@
                     <div class="col d-flex flex-column align-content-center justify-content-center m-3 p-0">
                         <p class="text-center">Thank you for reporting a bug.  Your feedback is important to us.</p>
                         <button id="report-bug-success-button" class="button-border orange mx-auto mt-3 px-3">OK</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Alternative modal content.  Failure message to be displayed if Report a Bug form fails to be submitted successfully. -->
+            <div id="report-bug-failure" class="report-bug-notification container hide">
+                <div class="row modal-header p-0">
+                    <div class="col d-flex align-items-center justify-content-center m-3 p-0">
+                        <img class="small-img align-middle d-none d-md-inline" src="assets/images/badge1.png" alt="F.C. Index logo.">
+                        <h3 class="align-middle d-inline ml-md-3 my-0">Something went wrong . . .</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex flex-column align-content-center justify-content-center m-3 p-0">
+                        <p class="text-center">Thank you for trying to report a bug.  Unfortunately something went wrong.  Please return and try again.</p>
+                        <button id="report-bug-failure-button" class="button-border orange mx-auto mt-3 px-3">OK</button>
                     </div>
                 </div>
             </div>

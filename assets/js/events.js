@@ -78,6 +78,7 @@ document.getElementById("close-modal-button").addEventListener("click", function
 // Finally it hides the modal windown entirely.
 function closeModal() {
     document.getElementById("report-bug-success").classList.add("hide");
+    document.getElementById("report-bug-failure").classList.add("hide");
     document.getElementById("report-bug-modal-content").classList.remove("hide");
     document.getElementById("report-bug-modal").classList.add("hide");
 };
@@ -96,4 +97,11 @@ document.getElementById("reportBugErrorType").addEventListener("change", functio
 // If the Report Bug is successful, a pop-up will notify the user.  This button calls the close modal function.
 document.getElementById("report-bug-success").addEventListener("click",  function() {
     closeModal();
+});
+
+// ------------------------------------------------Report a Bug Failure Button
+// If the Report Bug is unsuccessful, a pop-up will notify the user.  This button returns the user to the Report a Bug form modal.
+document.getElementById("report-bug-failure").addEventListener("click",  function() {
+    document.getElementById("report-bug-failure").classList.add("hide");
+    document.getElementById("report-bug-modal-content").classList.remove("hide");
 });

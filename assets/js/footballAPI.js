@@ -57,7 +57,7 @@ function clubSearch(searchString) {
                 // Need to create onclick events for all of the club-list table rows
                 let clubList = document.getElementsByClassName("club-list");
                 // Create a second for loop which iterates over all club-list class names and runs a function on click
-                // Solved by referencing the third method explained on this website:  http://www.howtocreate.co.uk/referencedvariables.html            
+                // Solved by referencing the third method explained on this website:  http://www.howtocreate.co.uk/referencedvariables.html
                 for (let i=0; i<clubList.length; i++) {
                     clubList[i].onclick = (function(clubResults) {
                         return function() {

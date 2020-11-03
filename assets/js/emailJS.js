@@ -17,6 +17,8 @@ function sendMail(reportBugForm) {
         },
         function(error) {
             console.log("Failed", error);
+            document.getElementById("report-bug-modal-content").classList.add("hide");
+            document.getElementById("report-bug-failure").classList.remove("hide");
         }
     );    
     return false;    

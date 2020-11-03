@@ -157,16 +157,15 @@ footer {
     cursor: pointer;
 }
 
-/*------------------------------------------------Report Bug Success*/
+/*------------------------------------------------Report Bug Success/Failure Message*/
 /* The below CSS is sourced from: https://www.w3schools.com/howto/howto_css_modals.asp */
-#report-bug-success {
+.report-bug-notification {
     background-color: #fff;
     margin: 20% auto; /* 20% from the top and centered */
     border: 1px solid #000;
     border-radius: 10px;
     width: 70%; /* Could be more or less, depending on screen size */
 }
-
 
 /*----------------------------------------------------------------------------------------------------------Section title here*/
 
