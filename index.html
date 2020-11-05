@@ -36,7 +36,7 @@
                 <h2 class="pt-5 mb-3">Welcome to Football Club Index.</h2>
                 <h3 class="my-3">Search for football clubs from around the world to find out more information!</h3>
                 <form id="club-search-form" class="d-flex flex-column align-items-center justify-content-center mt-3 pb-5">
-                    <h4><label for="club-search">Search for a football club:</label></h4>
+                    <h4><label for="club-search">Search for a club or country:</label></h4>
                     <input name="club-search" type="text" placeholder="Enter a club name" id="club-search" class="d-block d-md-inline text-center px-2">
                     <p id="search-string-message" class="my-1"></p>
                     <input type="button" value="Search" id="club-search-button" class="button-border orange mx-auto mt-1 px-3">
@@ -59,6 +59,8 @@
                     <tbody id="results-table-body">
                     </tbody>
                 </table>
+                <button id="previous-results-button" class="button-border blue float-left mx-auto mt-1 px-3 hide">Previous</button>
+                <button id="next-results-button" class="button-border blue float-right mx-auto mt-1 px-3 hide">Next</button>
             </div>
         </section>
         <!-- This section will show the club information and will only be visible when the users do a search and click on a club to view more info. -->

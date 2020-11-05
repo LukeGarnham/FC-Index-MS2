@@ -40,45 +40,92 @@ function clubSearch(searchString) {
                 // Hide the club info section
                 document.getElementById("club-info").classList.add("hide");
             } else {
-                // Otherwise display a message and build the results table body
-                document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
-                let resultsTableBody = document.getElementById("results-table-body");
+                // Otherwise set the api results to variable "clubs"
                 let clubs = apiResults.api.teams;
-                // Create a new table row for each club returned by the API.
-                for (let i=0; i<clubs.length; i++) {
-                    resultsTableBody.innerHTML += `
-                        <tr class="club-list clickable-row">
-                            <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
-                            <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
-                            <td class="align-middle"><img class="small-img" src="${clubs[i].logo}" alt="Club badge"></td>
-                        </tr>
-                    `;
-                };
-                // Need to create onclick events for all of the club-list table rows
-                let clubList = document.getElementsByClassName("club-list");
-                // Create a second for loop which iterates over all club-list class names and runs a function on click
-                // Solved by referencing the third method explained on this website:  http://www.howtocreate.co.uk/referencedvariables.html
-                for (let i=0; i<clubList.length; i++) {
-                    clubList[i].onclick = (function(clubResults) {
-                        return function() {
-                            // Populate the club-info section
-                            document.getElementById("club-logo").innerHTML=`<img src="${clubResults.logo}" aria-label="Club badge.">`;
-                            document.getElementById("club-name").innerHTML=`${nullDataCheck(clubResults.name)}`;
-                            document.getElementById("club-location").innerHTML=`${clubLocation(clubResults.venue_city, clubResults.country)}`;
-                            document.getElementById("club-founded").innerHTML=`${nullDataCheck(clubResults.founded)}`;
-                            document.getElementById("club-stadium-name").innerHTML=`${nullDataCheck(clubResults.venue_name)}`;
-                            document.getElementById("club-stadium-capacity").innerHTML=`${nullDataCheck(clubResults.venue_capacity)}`;
-                            // Hide the search results section and unhide the club-info section
-                            document.getElementById("search-results").classList.add("hide");
-                            document.getElementById("club-info").classList.remove("hide");
-                        };
-                    })(clubs[i]);
-                };
+                // Store the API results in the local storage so we can access them from other functions.
+                localStorage.setItem("clubs", JSON.stringify(clubs));
+                // Reset and store the API position index i to 0
+                localStorage.setItem("i", 0);
+                //  Display a message
+                document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
+                // Call the resultsOutput function which builds the output to screen.
+                resultsOutput();
                 // Unhide the results table
                 document.getElementById("results-table").classList.remove("hide");
             };
             // Unhide the search-results section.
             document.getElementById("search-results").classList.remove("hide");
         });
+    };
+};
+
+
+// Create a new table row for each club returned by the API.
+function resultsOutput() {
+    // Assign the table body to a variable and clear any existing data.
+    let resultsTableBody = document.getElementById("results-table-body");
+    resultsTableBody.innerHTML = "";
+    // Retrieve the results of the API  and position index from the local storage.
+    let clubs = JSON.parse(localStorage.getItem("clubs"));
+    let i = parseInt(localStorage.getItem("i"));
+    // Set an upper limit for the number of results we want to display on screen.
+    // If the remaining number of clubs is less than 10 more, the upper limit needs to be the remainder.
+    if (i+10>clubs.length) {
+        var upperLimit = clubs.length;
+    } else {
+        var upperLimit = i + 10;
+    }
+    // Build the results table body
+    for (i; i<upperLimit; i++) {
+        resultsTableBody.innerHTML += `
+            <tr class="club-list clickable-row">
+                <td class="align-middle">${nullDataCheck(clubs[i].name)}</td>
+                <td class="align-middle">${nullDataCheck(clubs[i].country)}</td>
+                <td class="align-middle"><img class="small-img" src="${clubs[i].logo}" alt="Club badge"></td>
+            </tr>
+        `;
+    };
+    // Reset i back to the local storage value.
+    i = parseInt(localStorage.getItem("i"));
+
+    // If there is an array element 10 more than the current position, we need to allow the user to click to the next 10 by unhiding the Next button.
+    if (clubs[(i+10)]) {
+        document.getElementById("next-results-button").classList.remove("hide");
+    } else {
+        document.getElementById("next-results-button").classList.add("hide");
+    }
+    // If there is an array element 10 before the current position, we need to allow the user to click to the previous 10 by unhiding the Previous button.
+    if (clubs[(i-10)]) {
+        document.getElementById("previous-results-button").classList.remove("hide");
+    } else {
+        document.getElementById("previous-results-button").classList.add("hide");
+    }
+    // Call the resultsLinks function which creates the output in the club information section.
+    // This is to create links on each table row but they must line up with the correct data in the clubs array.
+    resultsLinks(clubs, i);
+};
+
+
+// Create a function which adds link to every table array and passes the array information through
+function resultsLinks(clubs, index) {
+    // Need to create onclick events for all of the club-list table rows
+    let clubList = document.getElementsByClassName("club-list");
+    // Create a second for loop which iterates over all club-list class names and runs a function on click
+    // Solved by referencing the third method explained on this website:  http://www.howtocreate.co.uk/referencedvariables.html
+    for (let i=0; i<clubList.length; i++, index++) {
+        clubList[i].onclick = (function(clubResults) {
+            return function() {
+                // Populate the club-info section
+                document.getElementById("club-logo").innerHTML=`<img src="${clubResults.logo}" aria-label="Club badge.">`;
+                document.getElementById("club-name").innerHTML=`${nullDataCheck(clubResults.name)}`;
+                document.getElementById("club-location").innerHTML=`${clubLocation(clubResults.venue_city, clubResults.country)}`;
+                document.getElementById("club-founded").innerHTML=`${nullDataCheck(clubResults.founded)}`;
+                document.getElementById("club-stadium-name").innerHTML=`${nullDataCheck(clubResults.venue_name)}`;
+                document.getElementById("club-stadium-capacity").innerHTML=`${nullDataCheck(clubResults.venue_capacity)}`;
+                // Hide the search results section and unhide the club-info section
+                document.getElementById("search-results").classList.add("hide");
+                document.getElementById("club-info").classList.remove("hide");
+            };
+        })(clubs[index]);
     };
 };

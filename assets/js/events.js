@@ -46,6 +46,26 @@ document.getElementById("view-results-button").addEventListener("click", functio
     document.getElementById("search-results").classList.remove("hide");
 });
 
+// ------------------------------------------------Pagination Button - Next Results
+// In the search results section, if there are another 10 results, add a next button.
+// To do this, we increase the index i in the local storage and call the resultsOutput function
+document.getElementById("next-results-button").addEventListener("click", function () {
+    let i = parseInt(localStorage.getItem("i"));
+    i = i + 10;
+    localStorage.setItem("i", i);
+    resultsOutput();
+});
+
+// ------------------------------------------------Pagination Button - Previous Results
+// In the search results section, if there are 10 previous results, add a previous button.
+// To do this, we decrease the index i in the local storage and call the resultsOutput function
+document.getElementById("previous-results-button").addEventListener("click", function () {
+    let i = parseInt(localStorage.getItem("i"));
+    i = i - 10;
+    localStorage.setItem("i", i);
+    resultsOutput();
+});
+
 // ------------------------------------------------Report Bug Button in footer
 // This button in the footer will launch the Report a Bug modal
 document.getElementById("report-bug-button").addEventListener("click", function getElement() {
@@ -105,3 +125,4 @@ document.getElementById("report-bug-failure").addEventListener("click",  functio
     document.getElementById("report-bug-failure").classList.add("hide");
     document.getElementById("report-bug-modal-content").classList.remove("hide");
 });
+
