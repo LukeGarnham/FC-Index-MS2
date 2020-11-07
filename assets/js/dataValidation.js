@@ -26,14 +26,18 @@ function clubLocationSearch(club) {
     let city = club.venue_city;
     let country = club.country;
     if (stadium == null && city == null) {
+        // If no stadium name of city provided, don't show the map.
         document.getElementById("club-location-map").classList.add("hide");
     } else {
+        // Otherwise, show the map.  Build string containing stadium name (if provided), city and country.
         document.getElementById("club-location-map").classList.remove("hide");
         let clubLocationstring;
         if (stadium !== null) {
             clubLocationstring = stadium + " Stadium, "
         }
         clubLocationstring += clubLocation(city, country);
+        // Call createMap function and pass in the string we've built above.
+        // club array is not used in this function but is passed through to be used in building the marker on the map.
         createMap(clubLocationstring, club);
     }
 
