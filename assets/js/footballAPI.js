@@ -46,7 +46,7 @@ function clubSearch(searchString) {
                 localStorage.setItem("clubs", JSON.stringify(clubs));
                 // Reset and store the API position index i to 0
                 localStorage.setItem("i", 0);
-                //  Display a message
+                //  Display a message informing users that the search results can be clicked.
                 document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
                 // Call the resultsOutput function which builds the output to screen.
                 resultsOutput();
@@ -125,7 +125,10 @@ function resultsLinks(clubs, index) {
                 // Hide the search results section and unhide the club-info section
                 document.getElementById("search-results").classList.add("hide");
                 document.getElementById("club-info").classList.remove("hide");
+                // Call the clubLocationSearch() function to pass club data to Maps.  This function is in dataValidation.js.
+                clubLocationSearch(clubResults);
             };
         })(clubs[index]);
     };
+    
 };

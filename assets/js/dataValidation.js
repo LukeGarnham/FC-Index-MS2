@@ -19,6 +19,25 @@ function clubLocation(city, country) {
         return city + ", " + country;
     };
 };
+// ------------------------------------------------Validate Map Location Data
+// Validate and tidy the data that's passed to the createMap function.  If no stadium name and no venue city, don't display the map.
+function clubLocationSearch(club) {
+    let stadium = club.venue_name;
+    let city = club.venue_city;
+    let country = club.country;
+    if (stadium == null && city == null) {
+        document.getElementById("club-location-map").classList.add("hide");
+    } else {
+        document.getElementById("club-location-map").classList.remove("hide");
+        let clubLocationstring;
+        if (stadium !== null) {
+            clubLocationstring = stadium + " Stadium, "
+        }
+        clubLocationstring += clubLocation(city, country);
+        createMap(clubLocationstring, club);
+    }
+
+};
 
 // ----------------------------------------------------------------------------------------------------------Validate/clean the data input into the Report a Bug form
 // ------------------------------------------------Check if the club name field has data.
