@@ -17,15 +17,15 @@ function createMap(clubLocation, club) {
         query: clubLocation,
         fields: ["name", "geometry"],
     };
-    // search for the clubLocation and show the first result as the center of the map and place marker by calling the createMarker function.
+    // Search for the clubLocation and show the first result as the center of the map and place marker by calling the createMarker function.
     service.findPlaceFromQuery(request, function(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-            // Ensure map is not hidden.
+            // Ensure map is not hidden, center map around the first result (result[0]) and call the createMarker function.
             document.getElementById("club-location-map").classList.remove("hide");
-            createMarker(results[0], club);
             map.setCenter(results[0].geometry.location);
+            createMarker(results[0], club);
         } else {
-            // Hide the map.
+            // If there are no results from the search for the clubLocation, hide the map.
             document.getElementById("club-location-map").classList.add("hide");
         };
     });
