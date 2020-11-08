@@ -15,6 +15,8 @@ function nullDataCheck(data) {
 function clubLocation(city, country) {
     if (city == null) {
         return country;
+    } else if (country == null){
+        return city;
     } else {
         return city + ", " + country;
     };
@@ -36,6 +38,7 @@ function clubLocationSearch(club) {
             clubLocationstring = stadium + " Stadium, "
         }
         clubLocationstring += clubLocation(city, country);
+        console.log(clubLocationstring);
         // Call createMap function and pass in the string we've built above.
         // club array is not used in this function but is passed through to be used in building the marker on the map.
         createMap(clubLocationstring, club);
