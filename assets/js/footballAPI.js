@@ -72,7 +72,6 @@ function resultsOutput() {
     // Call the findLimit function.
     // If the remaining number of clubs is less than 10 more, the upper limit needs to be the remainder.
     let upperLimit = findLimit(i, clubs);
-    console.log(upperLimit);
     // Build the results table body
     for (i; i<upperLimit; i++) {
         resultsTableBody.innerHTML += `
