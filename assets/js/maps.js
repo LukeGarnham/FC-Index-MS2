@@ -20,9 +20,13 @@ function createMap(clubLocation, club) {
     // search for the clubLocation and show the first result as the center of the map and place marker by calling the createMarker function.
     service.findPlaceFromQuery(request, function(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log(results);
+            // Ensure map is not hidden.
+            document.getElementById("club-location-map").classList.remove("hide");
             createMarker(results[0], club);
             map.setCenter(results[0].geometry.location);
+        } else {
+            // Hide the map.
+            document.getElementById("club-location-map").classList.add("hide");
         };
     });
 }

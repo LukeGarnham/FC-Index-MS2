@@ -31,16 +31,16 @@ function clubLocationSearch(club) {
         // If no stadium name of city provided, don't show the map.
         document.getElementById("club-location-map").classList.add("hide");
     } else {
-        // Otherwise, show the map.  Build string containing stadium name (if provided), city and country.
-        document.getElementById("club-location-map").classList.remove("hide");
-        let clubLocationstring;
+        // Otherwise, build string containing stadium name (if provided), city and country.
+        // We do not unhide the map at this stage since there might not be any results returned by the places API when we search for this clubLocationString.
+        let clubLocationString;
         if (stadium !== null) {
-            clubLocationstring = stadium + " Stadium, "
+            clubLocationString = stadium + " Stadium, "
         }
-        clubLocationstring += clubLocation(city, country);
+        clubLocationString += clubLocation(city, country);
         // Call createMap function and pass in the string we've built above.
         // club array is not used in this function but is passed through to be used in building the marker on the map.
-        createMap(clubLocationstring, club);
+        createMap(clubLocationString, club);
     }
 
 };
