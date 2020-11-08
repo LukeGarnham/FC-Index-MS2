@@ -20,6 +20,7 @@ function createMap(clubLocation, club) {
     // search for the clubLocation and show the first result as the center of the map and place marker by calling the createMarker function.
     service.findPlaceFromQuery(request, function(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(results);
             createMarker(results[0], club);
             map.setCenter(results[0].geometry.location);
         };
@@ -36,7 +37,10 @@ function createMarker(place, clubResults) {
     google.maps.event.addListener(marker, "click", function() {
         // Set the infowindow content to show the club logo.
         infowindow.setContent(`
-            <img src="${clubResults.logo}" class="small-img" aria-label="Club badge.">
+            <img class="small-img" src="${clubResults.logo}" aria-label="Club badge.">
+            <p class="my-2"><strong>${nullDataCheck(clubResults.name)}</strong></p>
+            <p class="my-2">${nullDataCheck(clubResults.venue_name)}</p>            
+            <p class="my-2">${clubLocation(clubResults.venue_city, clubResults.country)}</p>
         `);
         infowindow.open(map, marker);
     });
