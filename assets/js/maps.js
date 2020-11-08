@@ -27,7 +27,7 @@ function createMap(clubLocation, club) {
         } else {
             // If there are no results from the search for the clubLocation, hide the map.
             document.getElementById("club-location-map").classList.add("hide");
-        };
+        }
     });
 }
 
@@ -48,4 +48,4 @@ function createMarker(place, clubResults) {
         `);
         infowindow.open(map, marker);
     });
-};
+}

@@ -22,4 +22,4 @@ function sendMail(reportBugForm) {
         }
     );    
     return false;    
-};
+}

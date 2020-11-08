@@ -15,9 +15,9 @@ function getAPIData(clubName, cb) {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             cb(JSON.parse(this.responseText));
-        };
+        }
     };
-};
+}
 
 // ------------------------------------------------teamSearch (triggered by clicking the club-search-button)
 function clubSearch(searchString) {
@@ -52,12 +52,12 @@ function clubSearch(searchString) {
                 resultsOutput();
                 // Unhide the results table
                 document.getElementById("results-table").classList.remove("hide");
-            };
+            }
             // Unhide the search-results section.
             document.getElementById("search-results").classList.remove("hide");
         });
-    };
-};
+    }
+}
 
 
 // Create a new table row for each club returned by the API.
@@ -69,12 +69,10 @@ function resultsOutput() {
     let clubs = JSON.parse(localStorage.getItem("clubs"));
     let i = parseInt(localStorage.getItem("i"));
     // Set an upper limit for the number of results we want to display on screen.
+    // Call the findLimit function.
     // If the remaining number of clubs is less than 10 more, the upper limit needs to be the remainder.
-    if (i+10>clubs.length) {
-        var upperLimit = clubs.length;
-    } else {
-        var upperLimit = i + 10;
-    }
+    let upperLimit = findLimit(i, clubs);
+    console.log(upperLimit);
     // Build the results table body
     for (i; i<upperLimit; i++) {
         resultsTableBody.innerHTML += `
@@ -84,7 +82,7 @@ function resultsOutput() {
                 <td class="align-middle"><img class="small-img" src="${clubs[i].logo}" alt="Club badge"></td>
             </tr>
         `;
-    };
+    }
     // Reset i back to the local storage value.
     i = parseInt(localStorage.getItem("i"));
 
@@ -103,7 +101,16 @@ function resultsOutput() {
     // Call the resultsLinks function which creates the output in the club information section.
     // This is to create links on each table row but they must line up with the correct data in the clubs array.
     resultsLinks(clubs, i);
-};
+}
+
+// If the remaining number of clubs is less than 10 more, the upper limit needs to be the remainder.
+function findLimit(i, clubs) {
+    if (i+10>clubs.length) {
+        return clubs.length;
+    } else {
+        return i + 10;
+    }
+}
 
 
 // Create a function which adds link to every table array and passes the array information through
@@ -129,6 +136,5 @@ function resultsLinks(clubs, index) {
                 clubLocationSearch(clubResults);
             };
         })(clubs[index]);
-    };
-    
-};
+    }    
+}

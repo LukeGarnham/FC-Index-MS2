@@ -8,7 +8,7 @@ document.getElementById("club-search").addEventListener("keyup", function() {
         document.getElementById("search-string-message").innerHTML = "Your search string must be at least 4 characters long.";
     } else {
         document.getElementById("search-string-message").innerHTML = "";
-    };
+    }
 });
 
 // ----------------------------------------------------------------------------------------------------------Event listeners for clicks
@@ -76,7 +76,6 @@ document.getElementById("report-bug-button").addEventListener("click", function 
 // This button on the modal will submit the form using EmailJS.  See the emailJS.js file for details.
 document.getElementById("report-bug-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    let errorType = document.getElementById("reportBugErrorType").value;
     sendMail(this);
 });
 
@@ -101,7 +100,7 @@ function closeModal() {
     document.getElementById("report-bug-failure").classList.add("hide");
     document.getElementById("report-bug-modal-content").classList.remove("hide");
     document.getElementById("report-bug-modal").classList.add("hide");
-};
+}
 
 // ------------------------------------------------Error Type - Modal
 document.getElementById("reportBugErrorType").addEventListener("change", function() {
