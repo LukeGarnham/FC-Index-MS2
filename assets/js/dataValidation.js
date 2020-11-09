@@ -35,7 +35,15 @@ function clubLocationSearch(club) {
         // We do not unhide the map at this stage since there might not be any results returned by the places API when we search for this clubLocationString.
         let clubLocationString;
         if (stadium !== null) {
-            clubLocationString = stadium + " Stadium, ";
+            // Check whether the stadium string returned by the API contains the string "stadium".
+            // The string should include "stadium" to improve the accuracy of the search results the Places API returns.
+            if (stadium.includes("stadium")) {
+                // If it does, then we use the string that the API returns.
+                clubLocation = stadium + ", ";
+            } else {
+                // Otherwise we take the stadium string the API returns and add "Stadium" to the end.
+                clubLocationString = stadium + " Stadium, ";
+            }
         }
         clubLocationString += clubLocation(city, country);
         // Call createMap function and pass in the string we've built above.
@@ -59,7 +67,7 @@ function clubName(name) {
 
 function errorType(errorString) {
     errorString = errorString.replace(/_/g, " ");
-    capatilisedString = errorString.split(" ").map(capitalizeFirstLetter).join(" ");
+    let capatilisedString = errorString.split(" ").map(capitalizeFirstLetter).join(" ");
     return capatilisedString;
 }
 
