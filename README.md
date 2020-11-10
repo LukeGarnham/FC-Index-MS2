@@ -46,14 +46,14 @@ As the owner of the website:
  
 ### Existing Features
 
-- [Football API](https://www.api-football.com/):  The API allows for clubs to be searched.  It requires a string of at least 4 characters and returns an array of results.  Each result contains some high level information about the club.  This is the basis of my website - the user enters a string and when they click the Search button or press Enter, the API is called.  The club name, country and badge are displayed in the results section.  They can then click on a club to view the high level information and view their location on a map.  Users can search for a country and any clubs in that country are also returned by the API.  The footballAPI.js file contains the javascript functions which call and unpack the data in the API.  The user receives a warning on screen if the string they are searching for is less than 4 characters as this is the minimum string length required by the API.
+- [Football API](https://www.api-football.com/):  The API allows for clubs to be searched.  It requires a string of at least 3 characters and returns an array of results.  Each result contains some high level information about the club.  This is the basis of my website - the user enters a string and when they click the Search button or press Enter, the API is called.  The club name, country and badge are displayed in the results section.  They can then click on a club to view the high level information and view their location on a map.  Users can search for a country and any clubs in that country are also returned by the API.  The footballAPI.js file contains the javascript functions which call and unpack the data in the API.  The user receives a warning on screen if the string they are searching for is less than 3 characters as this is the minimum string length required by the API.
 - Pagination:  Occasionally a large amount of data can be returned by the API.  When a user searches for a club or city, the API will return any clubs which contains that string.  Most of the time the API will only return a handful of results.  However, if a user searches for a country, dozens of results are returned.  It would slow the response time if all of these needed to be output onto the screen so I added a pagination feature whereby a maximum of 10 results are displayed on screen at any given time.  If there are more results to cycle through, Next and Previous buttons are displayed as appropriate.   Text appears between the buttons showing the user how many pages of results there are and which page they are currently on - this was a small addition late on in the project to improve user experience.  The Next and Previous button event listeners are in the events.js file while the function that populates the page with the next batch of results (resultsOutput) is located in the footballAPI.js file.
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview?_ga=2.246367876.1606386993.1604865013-774398906.1604748970) & [Google Places API](https://developers.google.com/places/web-service/overview):  I have utilized the Google Maps API and enable the Places API.  The places API allows for strings to be searched for and the results to be displayed on the map with markers.  The javascript functions which call the map and markers are in the maps.js file.
 - Feedback Form:  The website features a form which can be launched using a button in the footer.  The form allows users to report errors with either the website or club data.  The form launches as a modal over the top of the main website so that users do not lose the information they are looking at by having to navigate to another page.  If the form is submitted successully, the modal content changes to thank the user and an Ok button enables them to return to the main webpage - the form fields are reset.  If the form is not submitted successfully, the modal content informs them and clicking an OK button returns the user to the form with the data they tried to submit still visible.
 - [EmailJS API](https://www.emailjs.com/):  When the form is submitted, an email template is populated and sent to my personal email address.  This is done using emailJS.  The function which calls emailJS is in the emailJS.js file.
 
 Below is as example of the website.  You can see:
-1. the warning message the user receives when the search string is less than 4 characters.
+1. the warning message the user receives when the search string is less than 3 characters.
 2. the list of results including pagination buttons.
 3. the club information that is displayed to users including a map with marker.
 4. the Back to Results button.
@@ -68,11 +68,13 @@ Below an example of an unsuccessful form submission and the message the user see
 
 ### Features Left to Implement
 
-One of the big limitations I came up against as I was developing my project is that the football API only allows 100 calls/day before overage charges are incurred.  Each search on the website performs one call to the API.  The information returned is fairly high level.  When the user clicks on a club, I use the high level information that has already been returned in the call triggered by the search.  If I wanted to include more information about the club, more calls would need to be made.  When a user clicks on a club, I know the id of the club the user is interested in so I could use this to query the API for a lot more data.
+One of the big limitations I came up against as I was developing my project is that the football API only allows 100 calls/day before overage charges are incurred.  Each search on the website performs one call to the API.  The club information returned by the API is fairly high level.  When the user clicks on a club, I use the high level information that has already been returned in the call triggered by the search.  If I wanted to include more information about the club, more calls would need to be made to the API.  When a user clicks on a club, I know the id of the club the user is interested in so I could use this to query the API for a lot more data.
 
-If the free call limit was higher, there are many more features I could have added to my project.  The API has a wide range of data available including club stats, player stats, results, fixtures, betting odds and even predictions on who will win.  If I could make more calls to the API, I would have made a call to the API to return the competitions (leagues and cups) each club participates in.  I would also have added clubs  recent results and the upcoming fixtures too.  The latter would be particularly useful to users who are travelling to a destination as they could search for a club in their destination and then want to check if their is a fixture taking place during their visit.
+If the free call limit was higher, there are many more features I could have added to my project.  The API has a wide range of data available including club stats, player stats, results, fixtures, betting odds and even predictions on who will win fixtures.  If I could make more free calls to the API, I would have made a call to the API to return the competitions (leagues and cups) each club participates in.  I would also have added the recent results of a club and their upcoming fixtures in the club information section.  The latter would be particularly useful to users who are travelling to a destination as they could search for a club in their destination and then be able to check if there is a fixture taking place during their visit.
 
-A future implementation would be to provide a map of all of the results.  For example, if a users searches for a country, show the country on a map with markers showing the location of each club.  This would also help users visually see which clubs might be closest to where they staying during their visit.  For example, a user travelling to Manchester may search for Manchester which returns 17 possible clubs.  As well as seeing a list of clubs, it would improve the user experience if they see a map on which they can identify the club that is closest to the place they are staying in Manchester.
+A future implementation would be to allow users to search by location and see the results on a map rather than as a list.  I would make the results output optional so that a user can choose to see results as a list or on a map.  For example, if a users searches for a country, seeing the results on a map with markers showing the location of each club returned by the API may be more beneficial.  This would also help users visually see which clubs might be closest to where they staying during their visit.  However, if a user searches for Ipswich, the result returns a club in England and another club in Australia, so seeing these results on a map would not be useful.
+
+The API searches for club names so if a user searches for London, clubs based in London (Chelsea for example) will not be returned by the API.  Another future development might be to use the Google Maps Places API to first search for football clubs in a location e.g. football clubs in London.  The results returned by the Google Maps Places API could potentially be used to search the football API for more information about that club.
 
 ***
 
@@ -89,9 +91,16 @@ I used the following languages, frameworks and libraries to build this website:
 
 ***
 
+## Development Obstacles
+
+Below are some of the hurdles I came up against whilst developing my project.
+
+1. When the search results are output, I unpack some of the club information into a table.  Each row of the table represents a result from the API from the users search.  In order to populate the club-info section with the correct information, I wanted to create an click event listener to each table row which called a function to populate the club-info section and pass the correct club in as a parameter.  I initally created a simple event listener function for the table rows and passed through the index i representing the position in the array of each club.  This didn't work because each event listener returned the club information for the final club in the results array.  The reason being is that i is incremented in the for loop as the table rows are created thus when the event listener on the table rows was triggered, i represented the final result in the results array.  To overcome this, I turned to Google and eventually found [this solution](http://www.howtocreate.co.uk/referencedvariables.html).  The site offers 3 solutions but rates the final one as the "most complete" which is the one I utilised.  I copied the code and modified it in my footballAPI.js (rows 133-150) file to achieve the desired result.
+2. The table of search results has a hover effect to highlight each row blue.  Initially I targetted table rows with my CSS hover rule.  Since the table utilises a Bootstrap class table-striped, alternate rows have shading inherited from this class and this meant that initially, my css hover effect was only applied to the table rows without any Bootstrap shading (the even numbered rows).  To overcome this, I initially used the !important override in my CSS rule as an easy solution.  Knowing that this is bad practice, I instead used the Chrome Inspect tools to identify the Bootstrap rule which was being applied (.table-striped tbody tr:nth-of-type(odd)) and changed my rule to target the elements with the same level of specificity (.table-striped tbody tr:hover) knowing that my CSS link is placed after the Bootstrap link in my <head> element and would thus 'win' and apply my hover rule to all table rows.
+3. There are two buttons in the 
 
 
-
+***
 
 ## Testing
 
@@ -115,9 +124,19 @@ If this section grows too long, you may want to split it off into a separate fil
 
 
 
+### Unresolved Bugs/Issues
+
+The football API returns a directory for the club badge image.  I use this to display the club badge in the search results table, club info section and in the information shown by clicking on the map markers.  This adds some visual elements to the webpage.  However, for many clubs there is no badge image and the image below is returned by the API.  I had hoped that in each instance where no club badge was provided, the same directory would be returned by the API.  If it was, I would have been able to build an 'if' statement into the JavaScript to check all the club badge directory strings returned by the API.  For example, if the directory string returned for a club matches the "image not available" directory string I would then choose not to use the image.  I would either hide the elements containing the club badge or perhaps use a more visually pleasing, colourful placeholder image, for example the FC Index logo.  Unfortunately, the API returns a unique directory for every club, regardless of whether a club badge is available or not.  Due to this, my webpage presents the below image for quite a lot of clubs.  If a user searches for "Manchester" the API returns 13 clubs, 8 of which have no club badge and thus the below image is returned but from 8 different directories.
+![Image Not Available](assets/images/image-not-available.png)
+
+
+***
+
 ## Deployment
 
-The project was developed in its entirety using GitPod with every update being pushed to the main branch.  The main branch is hosted on GitHub pages (here)[https://lukegarnham.github.io/FC-Index-MS2/].
+The project was developed in its entirety using GitPod with every update being pushed to the main branch.  The main branch is hosted on GitHub pages [here](https://lukegarnham.github.io/FC-Index-MS2/).
+
+***
 
 ## Credits
 
@@ -128,7 +147,7 @@ The project was developed in its entirety using GitPod with every update being p
 
 - For the modal, I utilised a solution provided [here](https://www.w3schools.com/howto/howto_css_modals.asp).  This solution has been modified for the purposes of my website but I predominently used the CSS styling to create the shaded background which sits on top of the main webpage content.
 - The favicons were generated using [this website](https://www.favicon-generator.org/).
-- The football API was sourced through [rapidAPI.com](https://rapidapi.com/api-sports/api/api-football/details) and the documentation for the API can be found [here](https://www.api-football.com/documentation#leagues-parameters).  The initial API call code was copied from [here](// https://rapidapi.com/api-sports/api/api-football/endpoints) but modified for the purposes of my website.
+- The football API was sourced through [rapidAPI.com](https://rapidapi.com/api-sports/api/api-football/details) and the documentation for the API can be found [here](https://www.api-football.com/documentation#leagues-parameters).  The initial API call code was copied from [here](https://rapidapi.com/api-sports/api/api-football/endpoints) but modified for the purposes of my website.
 - [EmailJS](https://www.emailjs.com/) has been used so that reports submitted by users on the website are emailed to my personal email address utilising an email template.
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/overview) has been used to provide the maps in the club info section.  In conjunction with this, [Google Maps Places API](https://developers.google.com/places/web-service/overview) has been used so that the club locations can be searched for and markers added to the map at the location of the first result.  The functions which calls the map and places the marker were copied from [here](https://developers.google.com/maps/documentation/javascript/examples/place-search?hl=en_GB#maps_place_search-javascript) but have been modified for the purposes of my website.
 - When the search results are generated, I need each to have an onclick event which passes the relevant club information into the club info section.  To create this, I utilised [this solution](http://www.howtocreate.co.uk/referencedvariables.html) I found through a Google search.  This can be found in the resultsLinks function in the footballAPI.js file.
