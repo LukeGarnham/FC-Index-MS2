@@ -115,10 +115,10 @@ function findLimit(i, clubs) {
 
 // This function updates the page numbers so users know how many results there are to cycle through and where they are within that cycle.
 function pageNumbers(clubs, i) {
+    // Calculate the current page we are on using the index i.
     let currentPage = Math.ceil((i+1)/10);
-    console.log(currentPage);
+    // Calculate the total number of pages there are.
     let totalPages = Math.ceil((clubs.length)/10);
-    console.log(totalPages);
     document.getElementById("page-number").innerHTML="Page " + currentPage + "/" + totalPages;
 }
 
