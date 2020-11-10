@@ -34,7 +34,7 @@ As the owner of the website:
 - I want to utilise an API to provide a map showing the clubs location.
 - I want users to be able to notify me if any of the information the website displays is incorrect so that it can be fixed.
 
-### wireframes
+### Wireframes
 
 [Click here to see my full Wireframe](wireframe/ms2-project-wireframe.pdf)
 
@@ -46,14 +46,25 @@ As the owner of the website:
  
 ### Existing Features
 
-- [Football API](https://www.api-football.com/):  The API allows for clubs to be searched.  It requires a string of at least 4 characters and returns an array of results.  Each result contains some high level information about the club.  This is the basis of my website - the user enters a string and when they click the Search button or press Enter, the API is called.  The club name, country and badge are displayed in the results section.  They can then click on a club to view the high level information and view their location on a map.  Users can search for a country and any clubs in that country are also returned by the API.  The footballAPI.js file contains the javascript functions which call and unpack the data in the API.
-- Pagination:  Occasionally a large amount of data can be returned by the API.  When a user searches for a club or city, the API will return any clubs which contains that string.  Most of the time the API will only return a handful of results.  However, if a user searches for a country, dozens of results are returned.  If would slow the response time if all of these needed to be output onto the screen so I added a pagination feature whereby a maximum of 10 results are displayed on screen at any given time.  If there are more results to cycle through, Next and Previous buttons are displayed as appropriate.   The Next and Previous button event listeners are in the events.js file while the function that populates the page with the next batch of results (resultsOutput) is located in the footballAPI.js file.
+- [Football API](https://www.api-football.com/):  The API allows for clubs to be searched.  It requires a string of at least 4 characters and returns an array of results.  Each result contains some high level information about the club.  This is the basis of my website - the user enters a string and when they click the Search button or press Enter, the API is called.  The club name, country and badge are displayed in the results section.  They can then click on a club to view the high level information and view their location on a map.  Users can search for a country and any clubs in that country are also returned by the API.  The footballAPI.js file contains the javascript functions which call and unpack the data in the API.  The user receives a warning on screen if the string they are searching for is less than 4 characters as this is the minimum string length required by the API.
+- Pagination:  Occasionally a large amount of data can be returned by the API.  When a user searches for a club or city, the API will return any clubs which contains that string.  Most of the time the API will only return a handful of results.  However, if a user searches for a country, dozens of results are returned.  It would slow the response time if all of these needed to be output onto the screen so I added a pagination feature whereby a maximum of 10 results are displayed on screen at any given time.  If there are more results to cycle through, Next and Previous buttons are displayed as appropriate.   Text appears between the buttons showing the user how many pages of results there are and which page they are currently on - this was a small addition late on in the project to improve user experience.  The Next and Previous button event listeners are in the events.js file while the function that populates the page with the next batch of results (resultsOutput) is located in the footballAPI.js file.
 - [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview?_ga=2.246367876.1606386993.1604865013-774398906.1604748970) & [Google Places API](https://developers.google.com/places/web-service/overview):  I have utilized the Google Maps API and enable the Places API.  The places API allows for strings to be searched for and the results to be displayed on the map with markers.  The javascript functions which call the map and markers are in the maps.js file.
 - Feedback Form:  The website features a form which can be launched using a button in the footer.  The form allows users to report errors with either the website or club data.  The form launches as a modal over the top of the main website so that users do not lose the information they are looking at by having to navigate to another page.  If the form is submitted successully, the modal content changes to thank the user and an Ok button enables them to return to the main webpage - the form fields are reset.  If the form is not submitted successfully, the modal content informs them and clicking an OK button returns the user to the form with the data they tried to submit still visible.
 - [EmailJS API](https://www.emailjs.com/):  When the form is submitted, an email template is populated and sent to my personal email address.  This is done using emailJS.  The function which calls emailJS is in the emailJS.js file.
 
-![Form Submission](assets/images/favicon/form-submission.png)
-![Form Email](assets/images/favicon/form-email.png)
+Below is as example of the website.  You can see:
+1. the warning message the user receives when the search string is less than 4 characters.
+2. the list of results including pagination buttons.
+3. the club information that is displayed to users including a map with marker.
+4. the Back to Results button.
+5. the New Search button.
+6. the message a user receives if there are no results.
+![Example of how to use website site](assets/images/website-example.gif)
+
+Below an example of a successful form submission and the message the user sees:
+![Form Submission Success](assets/images/emailJS-success.gif)
+Below an example of an unsuccessful form submission and the message the user sees:
+![Form Submission Success](assets/images/emailJS-failure.gif)
 
 ### Features Left to Implement
 
