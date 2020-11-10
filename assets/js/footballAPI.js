@@ -35,8 +35,9 @@ function clubSearch(searchString) {
             if (apiResults.api.results == 0) {
                 // If so, display an error message
                 document.getElementById("message").innerHTML = "Sorry, no teams found.  Please check the spelling or try searching for a different team.";
-                // Hide the results table
+                // Hide the results table and pagination buttons.
                 document.getElementById("results-table").classList.add("hide");
+                document.getElementById("pagination").classList.add("hide");
                 // Hide the club info section
                 document.getElementById("club-info").classList.add("hide");
             } else {
@@ -50,8 +51,9 @@ function clubSearch(searchString) {
                 document.getElementById("message").innerHTML = "Click on one of the clubs below to find out more information:";
                 // Call the resultsOutput function which builds the output to screen.
                 resultsOutput();
-                // Unhide the results table
+                // Unhide the results table and pagination buttons.
                 document.getElementById("results-table").classList.remove("hide");
+                document.getElementById("pagination").classList.remove("hide");
             }
             // Unhide the search-results section.
             document.getElementById("search-results").classList.remove("hide");
