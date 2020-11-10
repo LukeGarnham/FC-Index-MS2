@@ -97,6 +97,8 @@ function resultsOutput() {
     } else {
         document.getElementById("previous-results-button").classList.add("hide");
     }
+    // Call the function which creates and updates the page numbers.
+    pageNumbers(clubs, i);
     // Call the resultsLinks function which creates the output in the club information section.
     // This is to create links on each table row but they must line up with the correct data in the clubs array.
     resultsLinks(clubs, i);
@@ -111,6 +113,14 @@ function findLimit(i, clubs) {
     }
 }
 
+// This function updates the page numbers so users know how many results there are to cycle through and where they are within that cycle.
+function pageNumbers(clubs, i) {
+    let currentPage = Math.ceil((i+1)/10);
+    console.log(currentPage);
+    let totalPages = Math.ceil((clubs.length)/10);
+    console.log(totalPages);
+    document.getElementById("page-number").innerHTML="Page " + currentPage + "/" + totalPages;
+}
 
 // Create a function which adds link to every table array and passes the array information through
 function resultsLinks(clubs, index) {

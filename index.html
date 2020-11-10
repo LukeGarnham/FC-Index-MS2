@@ -75,8 +75,11 @@
                     <tbody id="results-table-body">
                     </tbody>
                 </table>
-                <button id="previous-results-button" class="button-border blue float-left mx-auto mt-1 px-3 hide">Previous</button>
-                <button id="next-results-button" class="button-border blue float-right mx-auto mt-1 px-3 hide">Next</button>
+                <div class="d-flex align-items-center justify-content-center mt-1">
+                    <button id="previous-results-button" class="button-border blue ml-0 px-3 hide">Previous</button>
+                    <span id="page-number" class="mx-auto"></span>
+                    <button id="next-results-button" class="button-border blue mr-0 px-3 hide">Next</button>
+                </div>
             </div>
         </section>
         <!-- This section will show the club information and will only be visible when the users do a search and click on a club to view more info. -->
