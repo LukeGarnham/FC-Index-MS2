@@ -21,7 +21,7 @@ function getAPIData(clubName, cb) {
 
 // ------------------------------------------------teamSearch (triggered by clicking the club-search-button)
 function clubSearch(searchString) {
-    if (searchString.length < 4) {
+    if (searchString.length < 3) {
         
     } else {
         // Replace any spaces with underscores and make string all lower case

@@ -1,11 +1,11 @@
 // ----------------------------------------------------------------------------------------------------------Event listeners for key input
 // ------------------------------------------------Club Search
-// This will display a warning message on screen if the user types a string less than 4 characters.
-// Searching for a string of less than 4 characters will not work as per if statement in footballAPI.js
+// This will display a warning message on screen if the user types a string less than 3 characters.
+// Searching for a string of less than 3 characters will not work as per if statement in footballAPI.js
 document.getElementById("club-search").addEventListener("keyup", function() {
     let searchString = document.getElementById("club-search").value;
-    if (searchString.length > 0 && searchString.length < 4) {
-        document.getElementById("search-string-message").innerHTML = "Your search string must be at least 4 characters long.";
+    if (searchString.length > 0 && searchString.length < 3) {
+        document.getElementById("search-string-message").innerHTML = "Your search string must be at least 3 characters long.";
     } else {
         document.getElementById("search-string-message").innerHTML = "";
     }
