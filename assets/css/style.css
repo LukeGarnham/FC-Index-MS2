@@ -174,3 +174,9 @@ footer {
     border-radius: 10px;
     width: 70%; /* Could be more or less, depending on screen size */
 }
+
+/*------------------------------------------------Report Bug Loading Gif*/
+/* The below CSS is sourced from: https://www.w3schools.com/howto/howto_css_modals.asp */
+#report-loading {
+    margin: 20% auto; /* 20% from the top and centered */
+}
