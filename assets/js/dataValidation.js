@@ -1,3 +1,13 @@
+// ----------------------------------------------------------------------------------------------------------Validate the data that is passed to the API
+// ------------------------------------------------Search String check
+// This function checks the search string for any trailing spaces and removes them.
+function searchStringCheck(input) {
+    // Remove any trailing spaces from the end of the search string.
+    let searchString = input.replace(/\s+$/, '');
+    // Search for club and call the API via the clubSearch function
+    clubSearch(searchString);
+}
+
 // ----------------------------------------------------------------------------------------------------------Validate the data returned by the API
 
 // ------------------------------------------------Null Data check

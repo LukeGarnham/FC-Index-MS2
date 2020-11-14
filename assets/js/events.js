@@ -18,8 +18,8 @@ document.getElementById("club-search").addEventListener("keyup", function() {
 document.getElementById("club-search-button").addEventListener("click", function() {
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
-    // Search for club and call the API via the clubSearch function
-    clubSearch(input);
+    // Pass the string into the searchStringCheck function in the dataValidation.js file which will clean the string before the API is called.
+    searchStringCheck(input);
 });
 
 // Searches when user presses Enter
@@ -27,8 +27,8 @@ document.getElementById("club-search-form").addEventListener("submit", function(
     event.preventDefault();
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
-    // Search for club and call the API via the clubSearch function
-    clubSearch(input);
+    // Pass the string into the searchStringCheck function in the dataValidation.js file which will clean the string before the API is called.
+    searchStringCheck(input);
 });
 
 // ------------------------------------------------New Search Button
