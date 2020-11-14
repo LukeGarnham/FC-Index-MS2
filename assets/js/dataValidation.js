@@ -50,7 +50,7 @@ function clubLocationSearch(club) {
             // The string should include "stadium" to improve the accuracy of the search results the Places API returns.
             if (stadium.includes("stadium")) {
                 // If it does, then we use the string that the API returns.
-                clubLocation = stadium + ", ";
+                clubLocationString = stadium + ", ";
             } else {
                 // Otherwise we take the stadium string the API returns and add "Stadium" to the end.
                 clubLocationString = stadium + " Stadium, ";
