@@ -176,12 +176,12 @@
                 </div>
                 <form id="report-bug-form" class="m-3">
                     <div class="form-group">
-                        <label for="name">Name:<span class="asterix"> *</span></label>
-                        <input class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                        <label for="form-name">Name:<span class="asterix"> *</span></label>
+                        <input id="form-name" class="form-control" name="name" type="text" placeholder="Enter your name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email:<span class="asterix"> *</span></label>
-                        <input class="form-control" name="email" type="email" placeholder="Enter your email address" required>
+                        <label for="form-email">Email:<span class="asterix"> *</span></label>
+                        <input id="form-email" class="form-control" name="email" type="email" placeholder="Enter your email address" required>
                     </div>
                     <div class="form-group">
                         <label for="reportBugErrorType">What type of error would you like to report?:<span class="asterix"> *</span></label>
@@ -192,8 +192,8 @@
                         </select>
                     </div>
                     <div id="report-bug-club-name" class="form-group hide">
-                        <label for="clubName">Please enter the club name:</label>
-                        <input class="form-control" name="clubName" type="text" placeholder="Enter club name">
+                        <label for="form-clubName">Please enter the club name:</label>
+                        <input id="form-clubName" class="form-control" name="clubName" type="text" placeholder="Enter club name">
                     </div>
                     <div class="form-group">
                         <label for="bugDescription">Please provide details of the bug:</label>
@@ -234,13 +234,13 @@
                 </div>
             </div>
         </div>
+        <!-- Load the Google Maps & Places library -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsxTxe4uzLPrx06A66P6IuOiDSGoe5GQ&libraries=places&v=weekly"></script>
+        <!-- Link to JavaScript files -->
+        <script src="assets/js/footballAPI.js"></script>
+        <script src="assets/js/dataValidation.js"></script>
+        <script src="assets/js/events.js"></script>
+        <script src="assets/js/emailJS.js"></script>
+        <script src="assets/js/maps.js"></script>
     </body>
-    <!-- Load the Google Maps & Places library -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsxTxe4uzLPrx06A66P6IuOiDSGoe5GQ&libraries=places&v=weekly"></script>
-    <!-- Link to JavaScript files -->
-    <script src="assets/js/footballAPI.js"></script>
-    <script src="assets/js/dataValidation.js"></script>
-    <script src="assets/js/events.js"></script>
-    <script src="assets/js/emailJS.js"></script>
-    <script src="assets/js/maps.js"></script>
 </html>
