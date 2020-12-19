@@ -9,7 +9,7 @@ document.getElementById("club-search").addEventListener("keyup", function() {
     // The below checks the search string for any non-alphanumeric characters and warns the user if they have.
     // The solution for this check was sourced from: https://stackoverflow.com/questions/4434076/best-way-to-alphanumeric-check-in-javascript
     //  Searching for a string containing any non-alphanumeric characters will not work as per if statement in footballAPI.js
-    } else if (/[^a-zA-Z0-9]/.test(searchString)) {
+    } else if (/[^a-zA-Z0-9 ]/.test(searchString)) {
         document.getElementById("search-string-message").innerHTML = "Your search string must only contain letters or numbers.";
     } else {
         document.getElementById("search-string-message").innerHTML = "";
