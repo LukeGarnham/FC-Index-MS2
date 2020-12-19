@@ -177,27 +177,27 @@
                 <form id="report-bug-form" class="m-3">
                     <div class="form-group">
                         <label for="form-name">Name:<span class="asterix"> *</span></label>
-                        <input id="form-name" class="form-control" name="name" type="text" placeholder="Enter your name" required>
+                        <input id="form-name" class="form-control" name="name" type="text" placeholder="Enter your name (required)" required>
                     </div>
                     <div class="form-group">
                         <label for="form-email">Email:<span class="asterix"> *</span></label>
-                        <input id="form-email" class="form-control" name="email" type="email" placeholder="Enter your email address" required>
+                        <input id="form-email" class="form-control" name="email" type="email" placeholder="Enter your email address (required)" required>
                     </div>
                     <div class="form-group">
                         <label for="reportBugErrorType">What type of error would you like to report?:<span class="asterix"> *</span></label>
                         <select class="form-control" name="reportBugErrorType" id="reportBugErrorType" required>
-                            <option value="" selected disabled>Please select</option>
+                            <option value="" selected disabled>Please select (required)</option>
                             <option value="club_data_error">Club data error</option>
                             <option value="webpage_error">Webpage error</option>
                         </select>
                     </div>
                     <div id="report-bug-club-name" class="form-group hide">
-                        <label for="form-clubName">Please enter the club name:</label>
-                        <input id="form-clubName" class="form-control" name="clubName" type="text" placeholder="Enter club name">
+                        <label for="form-clubName">Please enter the club name:<span class="asterix"> *</span></label>
+                        <input id="form-clubName" class="form-control" name="clubName" type="text" placeholder="Enter club name (required)">
                     </div>
                     <div class="form-group">
-                        <label for="bugDescription">Please provide details of the bug:</label>
-                        <textarea class="form-control" name="bugDescription" id="bugDescription" rows="6"></textarea>
+                        <label for="bugDescription">Please provide details of the bug:<span class="asterix"> *</span></label>
+                        <textarea class="form-control" name="bugDescription" id="bugDescription" rows="6" placeholder="Bug details (required)" required></textarea>
                     </div>
                     <input id="send-bug-report-button" class="button-border blue mx-auto mt-3 px-3" type="submit" value="Report Bug">
                     <button id="close-modal-button" class="button-border orange float-right mx-auto mt-3 px-3">Close</button>

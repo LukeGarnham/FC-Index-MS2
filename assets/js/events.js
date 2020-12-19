@@ -107,8 +107,10 @@ document.getElementById("reportBugErrorType").addEventListener("change", functio
     let formValue = document.getElementById("reportBugErrorType").value;
     if (formValue === "club_data_error") {
         document.getElementById("report-bug-club-name").classList.remove("hide");
+        document.getElementById("form-clubName").required=true;
     } else {
         document.getElementById("report-bug-club-name").classList.add("hide");
+        document.getElementById("form-clubName").required=false;
     }
 });
 
