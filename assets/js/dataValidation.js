@@ -5,8 +5,8 @@ function searchStringCheck(input) {
     // Remove any trailing spaces from the end of the search string.
     // Solved by referencing this solution:  https://stackoverflow.com/questions/37864460/javascript-remove-trailing-spaces-only
     let searchString = input.replace(/\s+$/, '');
-    // Search for club and call the API via the clubSearch function.
-    clubSearch(searchString);
+    // Return the string without any trailing spaces.
+    return(searchString)
 }
 
 // ----------------------------------------------------------------------------------------------------------Validate the data returned by the API

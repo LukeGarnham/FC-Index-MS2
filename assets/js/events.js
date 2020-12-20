@@ -4,7 +4,8 @@
 // Searching for a string of less than 3 characters will not work as per if statement in footballAPI.js
 document.getElementById("club-search").addEventListener("keyup", function() {
     let searchString = document.getElementById("club-search").value;
-    if (searchString.length > 0 && searchString.length < 3) {
+    // The search string is passed to the searchStringCheck function to remove any trailing spaces.
+    if (searchStringCheck(searchString).length > 0 && searchStringCheck(searchString).length < 3) {
         document.getElementById("search-string-message").innerHTML = "Your search string must be at least 3 characters long.";
     // The below checks the search string for any non-alphanumeric characters and warns the user if they have.
     // The solution for this check was sourced from: https://stackoverflow.com/questions/4434076/best-way-to-alphanumeric-check-in-javascript
@@ -23,8 +24,10 @@ document.getElementById("club-search").addEventListener("keyup", function() {
 document.getElementById("club-search-button").addEventListener("click", function() {
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
-    // Pass the string into the searchStringCheck function in the dataValidation.js file which will clean the string before the API is called.
-    searchStringCheck(input);
+    // Pass the input into the searchStringCheck to remove any trailing spaces from the search string.
+    input = searchStringCheck(input);
+    // Pass the input string into the clubSearch function to call the API.
+    clubSearch(input);
 });
 
 // Searches when user presses Enter
@@ -32,8 +35,10 @@ document.getElementById("club-search-form").addEventListener("submit", function(
     event.preventDefault();
     // Get the search string from the search input box
     let input = document.getElementById("club-search").value;
-    // Pass the string into the searchStringCheck function in the dataValidation.js file which will clean the string before the API is called.
-    searchStringCheck(input);
+    // Pass the input into the searchStringCheck to remove any trailing spaces from the search string.
+    input = searchStringCheck(input);
+    // Pass the input string into the clubSearch function to call the API.
+    clubSearch(input);
 });
 
 // ------------------------------------------------New Search Button
