@@ -166,7 +166,7 @@ Following submission of this project on 02/01/2021 but prior to it being assesse
 
 ![Console Log Error](assets/images/console-log-error.png)
 
-I raised this with Code Institute's Student Care team.  The lead assessor have me dispension to make changes post submission stating that: "The console error issue stems from the API adding CORS, and thus it may not be easy for the student to rectify the same, but we are willing to give them a chance to work around it as this seems to be a genuine problem from the API side and not the student's fault."
+I raised this with Code Institute's Student Care team.  The lead assessor gave me dispension to make changes post submission stating that: "The console error issue stems from the API adding CORS, and thus it may not be easy for the student to rectify the same, but we are willing to give them a chance to work around it as this seems to be a genuine problem from the API side and not the student's fault."
 
 I spent some time looking for a solution and worked with my mentor and tutor support.  Tutor support suggested prefixing the API url with "https://cors-anywhere.herokuapp.com/" but this did not solve the issue.
 
@@ -178,9 +178,9 @@ Below is a screenshot showing a the response headers from an API call I made on 
 
 ![Response Headers 30/12/2020](assets/images/response-headers-27012021.png)
 
-I suspected that this change to the Access-Control-Allow-Origin response header was the cause of the issue my project had suddenly started having.  At the time of writing (28/01/2021), I have raised the query with Rapid API's support team and am awaiting a response.
+I suspected that this change to the Access-Control-Allow-Origin response header was the cause of the issue and why my project had suddenly stopped working at some point after I submitted it.  I have raised the query with Rapid API's support team and at the time of writing (28/01/2021), I am awaiting a response.
 
-I found [this website]https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) from a Google search.  About one third of the way down the page, Access-Control-Allow-Origin is addressed.  It notes that this response header can be used to restrict access to an API resource but the asterix (denoting a wildcard) allows access from any origin.  However, crucially it states that:
+I found [this website](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) from a Google search.  About one third of the way down the page, Access-Control-Allow-Origin is addressed.  It notes that this response header can be used to restrict access to an API resource but the asterix (denoting a wildcard) allows access from any origin.  However, crucially it states that:
 
 "When responding to a credentialed requests request, the server must specify an origin in the value of the Access-Control-Allow-Origin header, instead of specifying the "*" wildcard."
 
