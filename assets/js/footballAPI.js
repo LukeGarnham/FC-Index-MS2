@@ -5,7 +5,7 @@
 function getAPIData(clubName, cb) {
 
     const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
+    xhr.withCredentials = false;
 
     xhr.open("GET", "https://rapidapi.p.rapidapi.com/v2/teams/search/" + clubName);
     xhr.setRequestHeader("x-rapidapi-host", "api-football-v1.p.rapidapi.com");

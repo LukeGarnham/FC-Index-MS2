@@ -160,6 +160,33 @@ The football API returns a directory for the club badge image.  I use this to di
 
 ![Image Not Available](assets/images/image-not-available.png)
 
+## Post Submission changes - Jan-21 Issues
+
+Following submission of this project on 02/01/2021 but prior to it being assessed, I noticed on 22/01/2021 that the project no longer functioned as it should.  When I searched for a club, nothing happened.  Instead a console log error message appeared advising that the API request has been blocked by CORS policy.
+
+![Console Log Error](assets/images/console-log-error.png)
+
+I raised this with Code Institute's Student Care team.  The lead assessor have me dispension to make changes post submission stating that: "The console error issue stems from the API adding CORS, and thus it may not be easy for the student to rectify the same, but we are willing to give them a chance to work around it as this seems to be a genuine problem from the API side and not the student's fault."
+
+I spent some time looking for a solution and worked with my mentor and tutor support.  Tutor support suggested prefixing the API url with "https://cors-anywhere.herokuapp.com/" but this did not solve the issue.
+
+I identified that since submitting the project, the API version has been updated from v1.2.6 to v1.2.7.  Looking at the Analytics section on the API Dashboard, I noticed that the response headers have changed, specifcally the Access-Control-Allow-Origin response header which is mentioned in the console log error message.  Below is a screenshot showing the response headers from an API call I made on 30/12/2020 under version 1.2.6 where the Access-Control-Allow-Origin response header shows my website:
+
+![Response Headers 30/12/2020](assets/images/response-headers-30122020.png)
+
+Below is a screenshot showing a the response headers from an API call I made on 27/01/2021 by which time the API version has changed to version 1.2.7.  The Access-Control-Allow-Origin response header is now an asterix ("*"):
+
+![Response Headers 30/12/2020](assets/images/response-headers-27012021.png)
+
+I suspected that this change to the Access-Control-Allow-Origin response header was the cause of the issue my project had suddenly started having.  At the time of writing (28/01/2021), I have raised the query with Rapid API's support team and am awaiting a response.
+
+I found [this website]https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) from a Google search.  About one third of the way down the page, Access-Control-Allow-Origin is addressed.  It notes that this response header can be used to restrict access to an API resource but the asterix (denoting a wildcard) allows access from any origin.  However, crucially it states that:
+
+"When responding to a credentialed requests request, the server must specify an origin in the value of the Access-Control-Allow-Origin header, instead of specifying the "*" wildcard."
+
+So in order to overcome this issue, I simply changed my XMLHttpRequest so that withCredentials is set to false rather than true.  This immediately fixed the problem I was having.
+
+
 ***
 
 ## Deployment
