@@ -187,6 +187,8 @@ I found [this website](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) f
 So in order to overcome this issue, I simply changed my XMLHttpRequest so that withCredentials is set to false rather than true.  This immediately fixed the problem I was having.
 
 
+**Update 29/01/2021:**  I received a reply from Rapid API support saying that they do not have control over the response headers.  In the meantime, I have received a reply from API-Football in their [forum](https://rapidapi.com/api-sports/api/api-football/discussions?issueId=20025&issueTitle=Blocked-by-CORS-Policy) which provides a link to [this wesbite](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials) which confirms that the solution is to set withCredentials to false.
+
 ***
 
 ## Deployment
